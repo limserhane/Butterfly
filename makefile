@@ -27,13 +27,9 @@ AR = ar rcs
 MKDIR := mkdir -p
 RM := rm -rf
 
-.PHONY : all directories clean sandbox
+.PHONY : all directories clean sandbox run
 
-all : directories $(LIBRARY) $(EXAMPLE) $(SANDBOX)
-
-run : $(EXAMPLE)
-	@echo $<
-	@./$(EXAMPLE)
+all : directories $(LIBRARY) $(EXAMPLE)
 
 # Build objects
 $(BUILDDIR)%.o : $(SRCDIR)%.cpp
