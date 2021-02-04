@@ -14,9 +14,8 @@ class Wing : public Logger
 {
 
 public :
-	Wing();
 	Wing(Level::Value pLevel);
-	Wing(std::string pName, Level::Value pLevel = Level::trace);
+	Wing(std::string pName = "", Level::Value pLevel = Level::trace);
 
 	virtual ~Wing();
 
