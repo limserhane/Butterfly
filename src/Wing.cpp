@@ -1,11 +1,8 @@
-#include <Butterfly/Loggers/Wing.hpp>
+#include <Butterfly/Wing.hpp>
 
 #include <iostream>
 
 namespace Butterfly {
-
-namespace Loggers
-{
 
 Wing::Wing(Level::Value pLevel):
 	Logger{},
@@ -36,7 +33,5 @@ void Wing::Write(std::string record)
 {
 	std::cout << record;
 }
-
-} // namespace Loggers
 
 } // namespace Butterfly

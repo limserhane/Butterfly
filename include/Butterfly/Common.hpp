@@ -1,9 +1,15 @@
 #pragma once
 
 #include <string>
+#include <memory>
 
 namespace Butterfly
 {
+
+class Logger;
+using LoggerPointer = std::shared_ptr<Logger>;
+class Net;
+using NetPointer = std::shared_ptr<Net>;
 
 namespace Level
 {

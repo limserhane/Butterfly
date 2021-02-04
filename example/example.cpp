@@ -1,16 +1,34 @@
 
 #include <Butterfly/Butterfly.hpp>
-#include <Butterfly/Loggers/Wing.hpp>
+#include <Butterfly/Wing.hpp>
+#include <Butterfly/Net.hpp>
 
 #include <iostream>
 
+using namespace Butterfly;
+using namespace std;
+
 int main() {
     
-    Butterfly::Print();
+    Print();
 
-    Butterfly::Loggers::Wing l{"console"};
+    auto a = CreateNet("a");
+    auto b = CreateNet("b");
+    auto c = CreateWing<Wing>("c", Level::error);
+    auto d = CreateWing<Wing>();
+    auto e = CreateWing<Wing>("e", Level::fatal);
+    auto f = CreateWing<Wing>(Level::trace);
+    auto g = CreateWing<Wing>("g");
 
-    l.Trace("Hello dragonfly :)");
+    b->Add(c);
+    b->Add(d);
+
+    a->Add(b);
+    a->Add(e);
+    a->Add(f);
+    a->Add(g);
+
+    a->Trace("Hello world !");
 
     return 0;
 }

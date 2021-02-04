@@ -1,13 +1,13 @@
 #pragma once
 
 #include <Butterfly/Common.hpp>
-#include <Butterfly/Loggers/Logger.hpp>
+#include <Butterfly/Logger.hpp>
 #include <Butterfly/Details/Formatter.hpp>
 
-namespace Butterfly
-{
 
-namespace Loggers
+#include <string>
+
+namespace Butterfly
 {
 
 class Wing : public Logger
@@ -19,7 +19,7 @@ public :
 
 	virtual ~Wing();
 
-	virtual void Log(Level::Value pLevel, std::string pMessage);
+	virtual void Log(Level::Value pLevel, std::string pMessage) override;
 
 protected :
 
@@ -28,8 +28,6 @@ protected :
 	Level::Value mLevel;
 	Formatter mFormatter;
 
-}; // class LoggerWing
-
-} // namespace Loggers
+}; // class Wing
 
 } // namespace Butterfly

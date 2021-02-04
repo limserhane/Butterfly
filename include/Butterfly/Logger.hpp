@@ -7,9 +7,6 @@
 namespace Butterfly
 {
 
-namespace Loggers
-{
-
 class Logger
 {
 
@@ -21,14 +18,12 @@ public :
 
 	virtual void Log(Level::Value pLevel, std::string pMessage) = 0;
 
-	virtual void Trace(std::string pMessage);
+	virtual void Trace(std::string pMessage) final;
 
 protected :
 
 	std::string mName;
 	
 }; // class Logger
-
-} // namespace Loggers
 
 } // namespace Butterfly
