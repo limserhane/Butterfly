@@ -7,15 +7,15 @@
 namespace Butterfly
 {
 
-struct LogPackage
+struct Package
 {
-	LogPackage(std::string pName, Level::Value pLevel, std::string pMessage);
+	Package(std::string pName, Level::Value pLevel, std::string pMessage);
 
 	std::string Name;
 	Level::Value Level;
 	std::string Message;
 
-}; // struct LogPackage
+}; // struct Package
 
 
 } // namespace Butterfly

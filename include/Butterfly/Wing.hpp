@@ -2,7 +2,7 @@
 
 #include <Butterfly/Common.hpp>
 #include <Butterfly/Logger.hpp>
-#include <Butterfly/Details/Formatter.hpp>
+#include <Butterfly/Details/PackageFormatter.hpp>
 
 
 #include <string>
@@ -19,14 +19,14 @@ public :
 
 	virtual ~Wing();
 
-	virtual void Log(Level::Value pLevel, std::string pMessage) override;
+	virtual void Log(Level::Value pLevel, std::string pMessage) const override;
 
 protected :
 
-	virtual void Write(std::string record); /*TO BE ABSTRACT !!!*/
+	virtual void Write(std::string record) const; /*TO BE ABSTRACT !!!*/
 
 	Level::Value mLevel;
-	Formatter mFormatter;
+	PackageFormatter mFormatter;
 
 }; // class Wing
 

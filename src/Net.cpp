@@ -16,7 +16,7 @@ Net::Net(std::string pName):
 Net::~Net()
 {}
 
-void Net::Log(Level::Value pLevel, std::string pMessage)
+void Net::Log(Level::Value pLevel, std::string pMessage) const
 {
 	for (LoggerPointer logger : mLoggers)
 	{

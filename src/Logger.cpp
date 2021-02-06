@@ -10,9 +10,13 @@ Logger::Logger(std::string pName):
 Logger::~Logger()
 {}
 
-void Logger::Trace(std::string pMessage)
+void Logger::Trace(std::string pMessage) const
 {
 	Log(Level::trace, pMessage);
+}
+void Logger::Error(std::string pMessage) const
+{
+	Log(Level::error, pMessage);
 }
 
 } // namespace Butterfly

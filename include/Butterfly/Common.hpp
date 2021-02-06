@@ -2,6 +2,8 @@
 
 #include <string>
 #include <memory>
+#include <iostream>
+#include <sstream>
 
 namespace Butterfly
 {
@@ -29,7 +31,30 @@ constexpr const char* Names[] = { "trace", "info", "warning", "error", "fatal", 
 
 std::string GetName(Level::Value pLevel);
 
-
 } // namespace Level
+
+namespace Utils
+{
+
+struct Source
+{
+	Source(std::string pFile, int pLine, std::string pFunction):
+		File{pFile},
+		Line{pLine},
+		Function{pFunction}
+	{}
+
+	Source(const Source& other):
+		File{other.File},
+		Line{other.Line},
+		Function{other.Function}
+	{}
+
+	std::string File;
+	int Line;
+	std::string Function;
+};
+
+} // namespace Utils
 
 } // namespace Butterfly

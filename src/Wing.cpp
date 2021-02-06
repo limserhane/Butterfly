@@ -19,17 +19,17 @@ Wing::Wing(std::string pName, Level::Value pLevel):
 Wing::~Wing()
 {}
 
-void Wing::Log(Level::Value pLevel, std::string pMessage)
+void Wing::Log(Level::Value pLevel, std::string pMessage) const
 {
 	if(pLevel < mLevel)
 	{
 		return ;
 	}
 
-	Write(mFormatter.Format(LogPackage(mName, pLevel, pMessage)));
+	Write(mFormatter.Format(Package(mName, pLevel, pMessage)));
 }
 
-void Wing::Write(std::string record)
+void Wing::Write(std::string record) const
 {
 	std::cout << record;
 }

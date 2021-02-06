@@ -16,9 +16,10 @@ public :
 	
 	virtual ~ Logger();
 
-	virtual void Log(Level::Value pLevel, std::string pMessage) = 0;
+	virtual void Log(Level::Value pLevel, std::string pMessage) const = 0;
 
-	virtual void Trace(std::string pMessage) final;
+	virtual void Trace(std::string pMessage) const final;
+	virtual void Error(std::string pMessage) const final;
 
 protected :
 

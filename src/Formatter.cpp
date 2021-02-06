@@ -1,9 +1,9 @@
-#include <Butterfly/Details/Formatter.hpp>
+#include <Butterfly/Details/PackageFormatter.hpp>
 
 namespace Butterfly
 {
 
-std::string Formatter::Format(LogPackage pPackage)
+std::string PackageFormatter::Format(Package pPackage) const
 {
 	char buffer[512];
 

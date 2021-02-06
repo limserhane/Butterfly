@@ -1,21 +1,21 @@
 #pragma once
 
-#include <Butterfly/Details/LogPackage.hpp>
+#include <Butterfly/Details/Package.hpp>
 
 #include <string>
 
 namespace Butterfly {
 
-class Formatter
+class PackageFormatter
 {
 
 public : // functions
 
-	std::string Format(LogPackage pPackage);
+	std::string Format(Package pPackage) const;
 
 private : // members
 
-}; // Formatter
+}; // PackageFormatter
 
 
 } // namespace Butterfly

@@ -18,7 +18,7 @@ public :
 
 	virtual ~Net();
 
-	virtual void Log(Level::Value pLevel, std::string pMessage);
+	virtual void Log(Level::Value pLevel, std::string pMessage) const override;
 
 	void Add(LoggerPointer pLogger);
 	void Remove(size_t pPosition);

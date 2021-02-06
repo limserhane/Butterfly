@@ -1,11 +1,11 @@
-#include <Butterfly/Details/LogPackage.hpp>
+#include <Butterfly/Details/Package.hpp>
 
 
 
 namespace Butterfly
 {
 
-LogPackage::LogPackage(std::string pName, Level::Value pLevel, std::string pMessage):
+Package::Package(std::string pName, Level::Value pLevel, std::string pMessage):
 	Name{pName},
 	Level{pLevel},
 	Message{pMessage}
