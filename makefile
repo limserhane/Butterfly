@@ -29,7 +29,17 @@ RM := rm -rf
 
 .PHONY : all directories clean sandbox run
 
-all : rebuild
+# all : rebuild
+
+build : directories $(LIBRARY) $(EXAMPLE)
+
+rebuild : clean build
+
+directories : $(BUILDDIR) $(BINDIR)
+
+clean : 
+	@echo "Cleaning up project builds"
+	@$(RM) $(BUILDDIR)* $(BINDIR)*
 
 # Build objects
 $(BUILDDIR)%.o : $(SRCDIR)%.cpp
@@ -50,16 +60,6 @@ $(EXAMPLE) : $(EXAMPLEDIR)example.cpp $(LIBRARY)
 $(BUILDDIR) $(BINDIR) :
 	@echo "Making $@"
 	@$(MKDIR) $@
-
-directories : $(BUILDDIR) $(BINDIR)
-
-build : directories $(LIBRARY) $(EXAMPLE)
-
-rebuild : clean build
-
-clean : 
-	@echo "Cleaning up project builds"
-	@$(RM) $(BUILDDIR)* $(BINDIR)*
 
 sandbox : $(LIBRARY)
 	@echo "Building sandbox.out"
