@@ -43,7 +43,7 @@ std::string Exception::Format(Source pSource, std::string pDetails)
 	char buffer[bufferSize];
 	snprintf(
 		buffer, bufferSize,
-		"(%s) : %s",
+		"Butterfly : (%s) : %s",
 		pSource.PrettyFunction.c_str(),
 		pDetails.c_str()
 	);
@@ -52,6 +52,7 @@ std::string Exception::Format(Source pSource, std::string pDetails)
 
 void ThrowException(Source pSource, std::string pDetails)
 {
+	// std::cerr << Exception(pSource, pDetails).what() << std::endl;
 	throw Exception(pSource, pDetails);
 } 
 

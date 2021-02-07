@@ -1,7 +1,5 @@
 #include <Butterfly/Net.hpp>
 
-
-
 namespace Butterfly
 {
 
@@ -28,7 +26,8 @@ void Net::Add(LoggerPointer pLogger)
 {
 	if(!pLogger)
 	{
-		return;
+		ThrowException(BFLY_SOURCE, "Invalid argument, LoggerPointer is nullptr");
+		return ;
 	}
 
 	mLoggers.push_back(pLogger);
@@ -36,6 +35,12 @@ void Net::Add(LoggerPointer pLogger)
 
 void Net::Remove(size_t pPosition)
 {
+	if(pPosition >= mLoggers.size())
+	{
+		ThrowException(BFLY_SOURCE, "Out of range position, attempted to remove Logger at unavailable position");
+		return ;
+	}
+
 	mLoggers.erase(mLoggers.begin() + pPosition);
 }
 
