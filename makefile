@@ -35,7 +35,8 @@ build : directories $(LIBRARY) $(EXAMPLE)
 
 rebuild : clean build
 
-directories : $(BUILDDIR) $(BINDIR)
+directories :
+	@$(MKDIR) $(BUILDDIR) $(BINDIR)
 
 clean : 
 	@echo "Cleaning up project builds"
@@ -55,11 +56,6 @@ $(LIBRARY) : $(OBJECTS)
 $(EXAMPLE) : $(EXAMPLEDIR)example.cpp $(LIBRARY)
 	@echo "Building $(notdir $@)"
 	@$(CC) $(CCFLAGS) -I $(INCLUDEDIR) -L$(BINDIR) $^ -o $@
-
-# Create directories
-$(BUILDDIR) $(BINDIR) :
-	@echo "Making $@"
-	@$(MKDIR) $@
 
 sandbox : $(LIBRARY)
 	@echo "Building sandbox.out"
