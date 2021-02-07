@@ -33,28 +33,43 @@ std::string GetName(Level::Value pLevel);
 
 } // namespace Level
 
-namespace Utils
-{
-
 struct Source
 {
-	Source(std::string pFile, int pLine, std::string pFunction):
+	Source(std::string pFile, int pLine, std::string pFunction, std::string pPrettyFunction):
 		File{pFile},
 		Line{pLine},
-		Function{pFunction}
+		Function{pFunction},
+		PrettyFunction{pPrettyFunction}
 	{}
 
 	Source(const Source& other):
-		File{other.File},
-		Line{other.Line},
-		Function{other.Function}
+		Source{other.File, other.Line, other.Function, other.PrettyFunction}
 	{}
 
 	std::string File;
 	int Line;
 	std::string Function;
+	std::string PrettyFunction;
 };
 
-} // namespace Utils
+#define BFLY_SOURCE Source(__FILE__, __LINE__, __func__, __PRETTY_FUNCTION__)
+
+class Exception : public std::exception
+{
+
+public :
+	Exception(Source pSource, std::string pDetails);
+
+	const char* what() const throw();
+
+protected :
+	static std::string Format(Source pSource, std::string pDetails);
+
+private :
+	std::string mDescription;
+
+}; // class Exception
+
+void ThrowException(Source pSource, std::string pDetails);
 
 } // namespace Butterfly

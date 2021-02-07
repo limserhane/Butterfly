@@ -30,6 +30,7 @@ void Net::Add(LoggerPointer pLogger)
 	{
 		return;
 	}
+
 	mLoggers.push_back(pLogger);
 }
 

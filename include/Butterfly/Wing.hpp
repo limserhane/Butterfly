@@ -14,6 +14,7 @@ class Wing : public Logger
 {
 
 public :
+
 	Wing(Level::Value pLevel);
 	Wing(std::string pName = "", Level::Value pLevel = Level::trace);
 
@@ -23,7 +24,7 @@ public :
 
 protected :
 
-	virtual void Write(std::string record) const; /*TO BE ABSTRACT !!!*/
+	virtual void Write(std::string record) const = 0;
 
 	Level::Value mLevel;
 	PackageFormatter mFormatter;
