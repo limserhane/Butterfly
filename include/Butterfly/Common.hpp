@@ -5,19 +5,16 @@
 #include <iostream>
 #include <sstream>
 
-namespace Butterfly
-{
+namespace Butterfly {
 
 class Logger;
 using LoggerPointer = std::shared_ptr<Logger>;
 class Net;
 using NetPointer = std::shared_ptr<Net>;
 
-namespace Level
-{
+namespace Level {
 
-enum Value
-{
+enum Value {
 	trace	= 0,
 	info	= 1,
 	warning	= 2,
@@ -33,30 +30,23 @@ std::string GetName(Level::Value pLevel);
 
 } // namespace Level
 
-struct Source
-{
-	Source(std::string pFile, int pLine, std::string pFunction, std::string pPrettyFunction):
-		File{pFile},
-		Line{pLine},
-		Function{pFunction},
-		PrettyFunction{pPrettyFunction}
-	{}
+struct Source {
 
-	Source(const Source& other):
-		Source{other.File, other.Line, other.Function, other.PrettyFunction}
-	{}
+	Source(std::string pFile, int pLine, std::string pFunction, std::string pPrettyFunction);
+
+	Source(const Source& other);
 
 	std::string File;
 	int Line;
 	std::string Function;
 	std::string PrettyFunction;
-};
+
+}; // Source{}
 
 #define BFLY_SOURCE Source(__FILE__, __LINE__, __func__, __PRETTY_FUNCTION__)
 
 class Exception : public std::exception
 {
-
 public :
 	Exception(Source pSource, std::string pDetails);
 
@@ -68,7 +58,7 @@ protected :
 private :
 	std::string mDescription;
 
-}; // class Exception
+}; // Exception{}
 
 void ThrowException(Source pSource, std::string pDetails);
 
