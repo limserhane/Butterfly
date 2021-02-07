@@ -16,48 +16,33 @@ std::string GetName(Level::Value pLevel)
 
 } // namespace Level
 
-namespace Exceptions
+Exception::Exception(Source pSource, std::string pDetails)
 {
-
-std::string ExceptionFormat(Utils::Source pSource, std::string pDetails)
-{
-	char buffer[256];
-	snprintf(
-		buffer, 256,
-		"[%s] %s",
-		pSource.Function.c_str(),
-		pDetails.c_str()
-	);
-	return buffer;
-}
-
-Exception::Exception(Utils::Source pSource, std::string pDetails):
-	Exception{pSource, "Exception", pDetails}
-{}
-
-Exception::Exception(Utils::Source pSource, std::string pName, std::string pDetails)
-{
-	mDescription = Format(pSource, pName, pDetails);
-}
-
-const char* Exception::Format(Utils::Source pSource, std::string pName, std::string pDetails)
-{
-	char buffer[256];
-	snprintf(
-		buffer, 256,
-		"[%s] %s",
-		pSource.Function.c_str(),
-		pDetails.c_str()
-	);
-	return buffer;
+	mDescription = Format(pSource, pDetails);
 }
 
 const char* Exception::what() const throw()
 {
-	return mDescription;
+	return mDescription.c_str();
 }
 
+std::string Exception::Format(Source pSource, std::string pDetails)
+{
+	constexpr size_t bufferSize = 128;
+	char buffer[bufferSize];
+	snprintf(
+		buffer, bufferSize,
+		"(%s) : %s",
+		pSource.PrettyFunction.c_str(),
+		pDetails.c_str()
+	);
+	return buffer;
+}
 
-} // namespace Exceptions
+void ThrowException(Source pSource, std::string pDetails)
+{
+	throw Exception(pSource, pDetails);
+}
+
 
 } // namespace Butterfly

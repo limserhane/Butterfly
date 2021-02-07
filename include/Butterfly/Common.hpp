@@ -33,61 +33,43 @@ std::string GetName(Level::Value pLevel);
 
 } // namespace Level
 
-namespace Utils
-{
-
 struct Source
 {
-	Source(std::string pFile, int pLine, std::string pFunction):
+	Source(std::string pFile, int pLine, std::string pFunction, std::string pPrettyFunction):
 		File{pFile},
 		Line{pLine},
-		Function{pFunction}
+		Function{pFunction},
+		PrettyFunction{pPrettyFunction}
 	{}
 
 	Source(const Source& other):
-		File{other.File},
-		Line{other.Line},
-		Function{other.Function}
+		Source{other.File, other.Line, other.Function, other.PrettyFunction}
 	{}
 
 	std::string File;
 	int Line;
 	std::string Function;
+	std::string PrettyFunction;
 };
 
-} // namespace Utils
-
-#define BFLY_SOURCE Utils::Source(__FILE__, __LINE__, __func__)
-
-namespace Exceptions
-{
-
-std::string ExceptionFormat(Utils::Source pSource, std::string pDetails);
+#define BFLY_SOURCE Source(__FILE__, __LINE__, __func__, __PRETTY_FUNCTION__)
 
 class Exception : public std::exception
 {
 
 public :
-	Exception(Utils::Source pSource, std::string pDetails);
+	Exception(Source pSource, std::string pDetails);
+
 	const char* what() const throw();
+
 protected :
-	Exception(Utils::Source pSource, std::string pName, std::string pDetails);
-	static const char* Format(Utils::Source pSource, std::string pName, std::string pDetails);
+	static std::string Format(Source pSource, std::string pDetails);
+
 private :
-	const char* mDescription;
+	std::string mDescription;
+
 }; // class Exception
 
-template<class E>
-void Throw(Utils::Source pSource, std::string pDetails)
-{
-	static_assert(std::is_base_of<std::exception, E>(), "E must be an std::exception");
-
-	// throw(E(ExceptionFormat(pSource, pDetails)));
-	std::cerr << static_cast<std::exception>(E(ExceptionFormat(pSource, pDetails))).what();
-}
-
-} // namespace Exceptions
-
-#define BFLY_THROW(exception_type, pDetails) Exceptions::Throw<exception_type>(Utils::Source(__FILE__, __LINE__, __PRETTY_FUNCTION__), pDetails)
+void ThrowException(Source pSource, std::string pDetails);
 
 } // namespace Butterfly
