@@ -44,5 +44,4 @@ void ThrowException(Source pSource, std::string pDetails)
 	throw Exception(pSource, pDetails);
 }
 
-
 } // namespace Butterfly
