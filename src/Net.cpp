@@ -30,6 +30,9 @@ void Net::Add(LoggerPointer pLogger)
 	{
 		return;
 	}
+
+	BFLY_THROW(std::invalid_argument, "LoggerPointer was nullptr");
+
 	mLoggers.push_back(pLogger);
 }
 

@@ -57,4 +57,37 @@ struct Source
 
 } // namespace Utils
 
+#define BFLY_SOURCE Utils::Source(__FILE__, __LINE__, __func__)
+
+namespace Exceptions
+{
+
+std::string ExceptionFormat(Utils::Source pSource, std::string pDetails);
+
+class Exception : public std::exception
+{
+
+public :
+	Exception(Utils::Source pSource, std::string pDetails);
+	const char* what() const throw();
+protected :
+	Exception(Utils::Source pSource, std::string pName, std::string pDetails);
+	static const char* Format(Utils::Source pSource, std::string pName, std::string pDetails);
+private :
+	const char* mDescription;
+}; // class Exception
+
+template<class E>
+void Throw(Utils::Source pSource, std::string pDetails)
+{
+	static_assert(std::is_base_of<std::exception, E>(), "E must be an std::exception");
+
+	// throw(E(ExceptionFormat(pSource, pDetails)));
+	std::cerr << static_cast<std::exception>(E(ExceptionFormat(pSource, pDetails))).what();
+}
+
+} // namespace Exceptions
+
+#define BFLY_THROW(exception_type, pDetails) Exceptions::Throw<exception_type>(Utils::Source(__FILE__, __LINE__, __PRETTY_FUNCTION__), pDetails)
+
 } // namespace Butterfly

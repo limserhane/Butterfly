@@ -1,6 +1,6 @@
 
 #include <Butterfly/Butterfly.hpp>
-#include <Butterfly/Wing.hpp>
+#include <Butterfly/Wings/ConsoleWing.hpp>
 #include <Butterfly/Net.hpp>
 
 #include <iostream>
@@ -14,21 +14,22 @@ int main() {
 
     auto a = CreateNet("a");
     auto b = CreateNet("b");
-    auto c = CreateWing<Wing>("c", Level::error);
-    auto d = CreateWing<Wing>();
-    auto e = CreateWing<Wing>("e", Level::fatal);
-    auto f = CreateWing<Wing>(Level::trace);
-    auto g = CreateWing<Wing>("g");
+    auto c = CreateWing<ConsoleWing>("c");
+    auto d = CreateWing<ConsoleWing>("d", Level::trace);
+    auto e = CreateWing<ConsoleWing>("e", Level::fatal);
+    auto f = CreateWing<ConsoleWing>("f");
 
     b->Add(c);
     b->Add(d);
+    b->Add(e);
 
     a->Add(b);
-    a->Add(e);
     a->Add(f);
-    a->Add(g);
+
+    a->Add(nullptr);
 
     a->Trace("Hello world !");
+    a->Error("Error Butterfly stopped working.");
 
     return 0;
 }

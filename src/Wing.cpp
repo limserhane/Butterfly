@@ -29,9 +29,4 @@ void Wing::Log(Level::Value pLevel, std::string pMessage) const
 	Write(mFormatter.Format(Package(mName, pLevel, pMessage)));
 }
 
-void Wing::Write(std::string record) const
-{
-	std::cout << record;
-}
-
 } // namespace Butterfly
