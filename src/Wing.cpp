@@ -2,7 +2,8 @@
 
 #include <iostream>
 
-namespace Butterfly {
+namespace Butterfly
+{
 
 Wing::Wing(Level::Value pLevel):
 	Logger{},
@@ -29,4 +30,4 @@ void Wing::Log(Level::Value pLevel, std::string pMessage) const
 	Write(mFormatter.Format(Package(mName, pLevel, pMessage)));
 }
 
-} // namespace Butterfly
+} 

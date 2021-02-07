@@ -20,4 +20,4 @@ void ConsoleWing::Write(std::string record) const
 	std::cout << record;
 }
 
-} // namespace Butterfly
+} 

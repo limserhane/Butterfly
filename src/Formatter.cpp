@@ -18,4 +18,4 @@ std::string PackageFormatter::Format(Package pPackage) const
 	return buffer;
 }
 
-} // namespace Butterfly
+} 

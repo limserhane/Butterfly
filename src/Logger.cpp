@@ -1,7 +1,8 @@
 #include <Butterfly/Logger.hpp>
 
 
-namespace Butterfly {
+namespace Butterfly
+{
 
 Logger::Logger(std::string pName):
 	mName{pName}
@@ -19,4 +20,4 @@ void Logger::Error(std::string pMessage) const
 	Log(Level::error, pMessage);
 }
 
-} // namespace Butterfly
+} 

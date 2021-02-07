@@ -15,7 +15,6 @@ struct Package
 	Level::Value Level;
 	std::string Message;
 
-}; // struct Package
+}; 
 
-
-} // namespace Butterfly
+} 

@@ -39,4 +39,4 @@ void Net::Remove(size_t pPosition)
 	mLoggers.erase(mLoggers.begin() + pPosition);
 }
 
-} // namespace Butterfly
+} 

@@ -4,18 +4,14 @@
 
 #include <string>
 
-namespace Butterfly {
+namespace Butterfly
+{
 
 class PackageFormatter
 {
-
-public : // functions
-
+public :
 	std::string Format(Package pPackage) const;
 
-private : // members
+}; 
 
-}; // PackageFormatter
-
-
-} // namespace Butterfly
+} 

@@ -9,9 +9,7 @@ namespace Butterfly
 
 class Logger
 {
-
 public :
-
 	Logger(std::string pName = "");
 	
 	virtual ~ Logger();
@@ -22,9 +20,8 @@ public :
 	virtual void Error(std::string pMessage) const final;
 
 protected :
-
 	std::string mName;
 	
-}; // class Logger
+}; 
 
-} // namespace Butterfly
+} 

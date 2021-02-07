@@ -11,7 +11,6 @@ namespace Butterfly
 
 class Net : public Logger
 {
-
 public :
 	Net();
 	Net(std::string pName);
@@ -24,9 +23,8 @@ public :
 	void Remove(size_t pPosition);
 
 private :
-
 	std::vector<LoggerPointer> mLoggers;
 
-}; // class Net
+}; 
 
-} // namespace Butterfly
+} 

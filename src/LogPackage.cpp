@@ -11,4 +11,4 @@ Package::Package(std::string pName, Level::Value pLevel, std::string pMessage):
 	Message{pMessage}
 {}
 
-} // namespace Butterfly
+} 

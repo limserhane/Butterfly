@@ -8,18 +8,15 @@ namespace Butterfly
 
 class ConsoleWing : public Wing
 {
-
 public :
-
 	ConsoleWing(Level::Value pLevel);
 	ConsoleWing(std::string pName = "", Level::Value pLevel = Level::trace);
 
 	virtual ~ConsoleWing();
 
 protected :
-
 	virtual void Write(std::string record) const override;
 
-}; // class ConsoleWing
+}; 
 
-} // namespace Butterfly
+} 
