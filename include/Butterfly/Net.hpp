@@ -19,11 +19,11 @@ public :
 
 	virtual void Log(Level::Value pLevel, std::string pMessage) const override;
 
-	void Add(LoggerPointer pLogger);
+	void Add(std::shared_ptr<Logger> pLogger);
 	void Remove(size_t pPosition);
 
 private :
-	std::vector<LoggerPointer> mLoggers;
+	std::vector<std::shared_ptr<Logger>> mLoggers;
 
 }; 
 

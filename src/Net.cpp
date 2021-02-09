@@ -16,17 +16,17 @@ Net::~Net()
 
 void Net::Log(Level::Value pLevel, std::string pMessage) const
 {
-	for (LoggerPointer logger : mLoggers)
+	for (std::shared_ptr<Logger> logger : mLoggers)
 	{
 		logger->Log(pLevel, pMessage);
 	}
 }
 
-void Net::Add(LoggerPointer pLogger)
+void Net::Add(std::shared_ptr<Logger> pLogger)
 {
 	if(!pLogger)
 	{
-		ThrowException(BFLY_SOURCE, "Invalid argument, LoggerPointer is nullptr");
+		ThrowException(BFLY_SOURCE, "Invalid argument, pLogger is nullptr");
 		return ;
 	}
 
@@ -37,7 +37,7 @@ void Net::Remove(size_t pPosition)
 {
 	if(pPosition >= mLoggers.size())
 	{
-		ThrowException(BFLY_SOURCE, "Out of range position, attempted to remove Logger at unavailable position");
+		ThrowException(BFLY_SOURCE, "Out of range, pPosition is invalid position");
 		return ;
 	}
 

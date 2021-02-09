@@ -15,6 +15,7 @@ int main() {
     auto c = CreateWing<ConsoleWing>("c", Level::trace);
     auto d = CreateWing<ConsoleWing>("d", Level::warning);
     auto e = CreateWing<ConsoleWing>("e");
+    
 
     b->Add(c);
     b->Add(d);
@@ -22,10 +23,19 @@ int main() {
     a->Add(b);
     a->Add(e);
 
-    a->Add(nullptr);
+    try
+    {
+        Trace("Hello world !");
+    }
+    catch(const Butterfly::Exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
 
-    a->Trace("Hello world !");
-    a->Error("Error Butterfly stopped working.");
+    SetDefaultLogger(a);
+    
+    Trace("Hello world !");
+    Error("Error Butterfly stopped working.");
 
     return 0;
 }

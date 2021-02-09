@@ -39,7 +39,7 @@ const char* Exception::what() const throw()
 
 std::string Exception::Format(Source pSource, std::string pDetails)
 {
-	constexpr size_t bufferSize = 128;
+	constexpr size_t bufferSize = 256;
 	char buffer[bufferSize];
 	snprintf(
 		buffer, bufferSize,
