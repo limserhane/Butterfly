@@ -4,8 +4,7 @@
 namespace Butterfly
 {
 
-Registry::Registry():
-	mDefaultLogger{nullptr}
+Registry::Registry()
 {}
 
 Registry::~Registry()

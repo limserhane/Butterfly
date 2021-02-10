@@ -25,9 +25,7 @@ enum Value
 	fatal	= 4,
 	debug	= 5,
 	n
-}; 
-
-constexpr const char* Names[] = { "trace", "info", "warning", "error", "fatal", "debug" };
+};
 
 std::string GetName(Level::Value pLevel);
 

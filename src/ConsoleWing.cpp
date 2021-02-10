@@ -15,7 +15,7 @@ ConsoleWing::ConsoleWing(std::string pName, Level::Value pLevel):
 ConsoleWing::~ConsoleWing()
 {}
 
-void ConsoleWing::Write(std::string record) const
+void ConsoleWing::Write(std::string record)
 {
 	std::cout << record;
 }

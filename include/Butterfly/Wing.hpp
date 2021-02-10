@@ -21,7 +21,7 @@ public :
 	virtual void Log(Level::Value pLevel, std::string pMessage) const override;
 
 protected :
-	virtual void Write(std::string record) const = 0;
+	virtual void Write(std::string record) = 0;
 
 	Level::Value mLevel;
 	PackageFormatter mFormatter;

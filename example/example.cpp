@@ -1,6 +1,7 @@
 
 #include <Butterfly/Butterfly.hpp>
 #include <Butterfly/Wings/ConsoleWing.hpp>
+#include <Butterfly/Wings/FileWing.hpp>
 #include <Butterfly/Net.hpp>
 
 #include <iostream>
@@ -10,11 +11,15 @@ using namespace std;
 
 int main() {
 
-    auto a = CreateNet("a");
-    auto b = CreateNet("b");
-    auto c = CreateWing<ConsoleWing>("c", Level::trace);
-    auto d = CreateWing<ConsoleWing>("d", Level::warning);
-    auto e = CreateWing<ConsoleWing>("e");
+    std::shared_ptr<Net> a = CreateNet("a");
+    std::shared_ptr<Net> b = CreateNet("b");
+    std::shared_ptr<Logger> c = CreateWing<ConsoleWing>("c", Level::trace);
+    std::shared_ptr<Logger> d = CreateWing<ConsoleWing>("d", Level::warning);
+    std::shared_ptr<Logger> e = CreateWing<ConsoleWing>("e");
+
+    std::shared_ptr<Logger> d = CreateWing<FileWing>("d", Level::warning);
+    std::shared_ptr<Logger> e = CreateWing<FileWing>("log.txt");
+    std::shared_ptr<Logger> e = CreateWing<FileWing>(Level::trace);
     
 
     b->Add(c);

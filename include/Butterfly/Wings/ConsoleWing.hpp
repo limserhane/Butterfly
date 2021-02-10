@@ -15,7 +15,7 @@ public :
 	virtual ~ConsoleWing();
 
 protected :
-	virtual void Write(std::string record) const override;
+	virtual void Write(std::string record) override;
 
 }; 
 

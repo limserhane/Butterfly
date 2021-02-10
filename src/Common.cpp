@@ -6,7 +6,9 @@ namespace Butterfly
 
 namespace Level
 {
-	
+
+static const char* Names[] = { "trace", "info", "warning", "error", "fatal", "debug" };
+
 std::string GetName(Level::Value pLevel)
 {
 	if(0 <= pLevel && pLevel < Level::n)
@@ -14,7 +16,7 @@ std::string GetName(Level::Value pLevel)
 	return "";
 }
 
-} 
+}
 
 Source::Source(std::string pFile, int pLine, std::string pFunction, std::string pPrettyFunction):
 	File{pFile},
