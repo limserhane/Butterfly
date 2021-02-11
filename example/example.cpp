@@ -11,25 +11,18 @@ using namespace std;
 
 int main() {
 
-    std::shared_ptr<Net> a = CreateNet("a");
-    std::shared_ptr<Net> b = CreateNet("b");
-    std::shared_ptr<Logger> c = CreateWing("c");
-    std::shared_ptr<Logger> d = CreateWing<Wing>("");
-    std::shared_ptr<Logger> e = CreateWing<Wing>("e");
+    std::shared_ptr<Net> a = CreateNet("engine");
+    std::shared_ptr<Logger> b = CreateWing("engine-console");
+    std::shared_ptr<Logger> c = CreateWing<FileWing>("engine-file", "bin/log-engine.txt");
     
-    b->Add(c);
-    b->Add(d);
-
     a->Add(b);
-    a->Add(e);
+    a->Add(c);
 
-    Trace("Hello default logger !");
+    Trace("Butterflies all havin' fun !");
 
     SetDefaultLogger(a);
 
-    a->Error("Network stopped working.");
-
-    Error("Error Butterfly stopped working.");
+    Error("Engine stopped working due to work overlaod");
 
     return 0;
 }
