@@ -13,7 +13,7 @@ namespace Butterfly
 class Wing : public Logger
 {
 public :
-	Wing(std::string pName);
+	Wing();
 
 	virtual ~Wing();
 

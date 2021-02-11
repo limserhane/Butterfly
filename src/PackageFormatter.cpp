@@ -9,8 +9,7 @@ std::string PackageFormatter::Format(Package pPackage) const
 
 	snprintf(
 		buffer, 512,
-		"[%s][%s] %s\n",
-		pPackage.Name.c_str(),
+		"[%s] %s\n",
 		Level::GetName(pPackage.Level).c_str(),
 		pPackage.Message.c_str()
 	);

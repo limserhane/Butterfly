@@ -12,7 +12,7 @@ namespace Butterfly
 class Net : public Logger
 {
 public :
-	Net(std::string pName);
+	Net();
 
 	virtual ~Net();
 

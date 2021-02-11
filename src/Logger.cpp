@@ -4,8 +4,7 @@
 namespace Butterfly
 {
 
-Logger::Logger(std::string pName):
-	mName{pName}
+Logger::Logger()
 {}
 
 Logger::~Logger()

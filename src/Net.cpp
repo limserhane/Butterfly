@@ -3,8 +3,8 @@
 namespace Butterfly
 {
 
-Net::Net(std::string pName):
-	Logger{pName}
+Net::Net():
+	Logger{}
 {}
 
 Net::~Net()

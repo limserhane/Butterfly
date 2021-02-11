@@ -4,8 +4,8 @@
 namespace Butterfly
 {
 
-FileWing::FileWing(std::string pName, std::string pFilename):
-	Wing(pName),
+FileWing::FileWing(std::string pFilename):
+	Wing(),
 	mFile(pFilename, std::ios_base::app)
 {
 	if(!mFile.is_open())

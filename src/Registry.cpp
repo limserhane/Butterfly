@@ -6,7 +6,7 @@ namespace Butterfly
 {
 
 Registry::Registry():
-	mDefaultLogger(std::make_shared<Wing>("default"))
+	mDefaultLogger(std::make_shared<Wing>())
 {}
 
 Registry::~Registry()

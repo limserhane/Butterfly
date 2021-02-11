@@ -11,9 +11,9 @@ namespace Butterfly
 std::shared_ptr<Net> CreateNet(std::string pName = "");
 
 template<typename W = Wing, typename... Args>
-std::shared_ptr<Logger> CreateWing(Args... args)
+std::shared_ptr<Logger> CreateWing(std::string pName, Args... args)
 {
-	static_assert(std::is_base_of<Wing, W>::value, "W must derive from Wing class");
+	static_assert(std::is_base_of<Wing, W>::value, "W must be derived from Wing");
 	std::shared_ptr<Logger> logger = std::make_shared<W>(args...);
 	return logger;
 }
