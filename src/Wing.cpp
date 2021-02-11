@@ -5,9 +5,10 @@
 namespace Butterfly
 {
 
-Wing::Wing():
-	Logger{},
-	mFormatter{}
+Wing::Wing(std::string pName):
+	Logger(),
+	mName(pName),
+	mFormatter()
 {}
 
 Wing::~Wing()
@@ -15,7 +16,7 @@ Wing::~Wing()
 
 void Wing::Log(Level::Value pLevel, std::string pMessage)
 {
-	Write(mFormatter.Format(Package(pLevel, pMessage)));
+	Write(mFormatter.Format(Package(mName, pLevel, pMessage)));
 }
 
 void Wing::Write(std::string record)

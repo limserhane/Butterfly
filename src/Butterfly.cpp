@@ -5,7 +5,7 @@
 namespace Butterfly
 {
 
-std::shared_ptr<Net> CreateNet(std::string pName)
+std::shared_ptr<Net> CreateNet(std::string pIdentifier)
 {
 	std::shared_ptr<Net> logger = std::make_shared<Net>();
 	return logger;

@@ -4,7 +4,7 @@ namespace Butterfly
 {
 
 Net::Net():
-	Logger{}
+	Logger()
 {}
 
 Net::~Net()

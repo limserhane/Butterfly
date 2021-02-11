@@ -12,8 +12,8 @@ using namespace std;
 int main() {
 
     std::shared_ptr<Net> a = CreateNet("engine");
-    std::shared_ptr<Logger> b = CreateWing("engine-console");
-    std::shared_ptr<Logger> c = CreateWing<FileWing>("engine-file", "bin/log-engine.txt");
+    std::shared_ptr<Logger> b = CreateWing("", "engine");
+    std::shared_ptr<Logger> c = CreateWing<FileWing>("", "engine", "bin/log-engine.txt");
     
     a->Add(b);
     a->Add(c);

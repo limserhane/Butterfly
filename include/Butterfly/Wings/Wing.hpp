@@ -13,7 +13,7 @@ namespace Butterfly
 class Wing : public Logger
 {
 public :
-	Wing();
+	Wing(std::string mName = "");
 
 	virtual ~Wing();
 
@@ -22,6 +22,7 @@ public :
 protected :
 	virtual void Write(std::string record);
 
+	std::string mName;
 	PackageFormatter mFormatter;
 
 }; 

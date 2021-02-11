@@ -4,8 +4,8 @@
 namespace Butterfly
 {
 
-FileWing::FileWing(std::string pFilename):
-	Wing(),
+FileWing::FileWing(std::string pName, std::string pFilename):
+	Wing(pName),
 	mFile(pFilename, std::ios_base::app)
 {
 	if(!mFile.is_open())
@@ -13,6 +13,10 @@ FileWing::FileWing(std::string pFilename):
 		ThrowException(BFLY_SOURCE, "Runtime error, cannot open file pFilename");
 	}
 }
+
+FileWing::FileWing(std::string pFilename):
+	FileWing("", pFilename)
+{}
 
 FileWing::~FileWing()
 {
