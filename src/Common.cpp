@@ -54,8 +54,12 @@ std::string Exception::Format(Source pSource, std::string pDetails)
 
 void ThrowException(Source pSource, std::string pDetails)
 {
-	// std::cerr << Exception(pSource, pDetails).what() << std::endl;
 	throw Exception(pSource, pDetails);
+}
+
+void PrintException(Source pSource, std::string pDetails)
+{
+	std::cerr << Exception(pSource, pDetails).what() << std::endl;
 } 
 
 } 

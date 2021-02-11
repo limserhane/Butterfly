@@ -62,5 +62,6 @@ private :
 }; 
 
 void ThrowException(Source pSource, std::string pDetails);
+void PrintException(Source pSource, std::string pDetails);
 
 } 
