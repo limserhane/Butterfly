@@ -10,7 +10,7 @@ FileWing::FileWing(std::string pName, std::string pFilename):
 {
 	if(!mFile.is_open())
 	{
-		ThrowException(BFLY_SOURCE, "Runtime error, cannot open file pFilename");
+		ThrowException(BFLY_SOURCE, "failed, unable to open file pFilename");
 	}
 }
 
