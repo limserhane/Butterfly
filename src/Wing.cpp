@@ -1,33 +1,26 @@
-#include <Butterfly/Wing.hpp>
+#include <Butterfly/Wings/Wing.hpp>
 
 #include <iostream>
 
 namespace Butterfly
 {
 
-Wing::Wing(Level::Value pLevel):
-	Logger{},
-	mLevel{pLevel},
-	mFormatter{}
-{}
-
-Wing::Wing(std::string pName, Level::Value pLevel):
+Wing::Wing(std::string pName):
 	Logger{pName},
-	mLevel{pLevel},
 	mFormatter{}
 {}
 
 Wing::~Wing()
 {}
 
-void Wing::Log(Level::Value pLevel, std::string pMessage) const
+void Wing::Log(Level::Value pLevel, std::string pMessage)
 {
-	if(pLevel < mLevel)
-	{
-		return ;
-	}
-
 	Write(mFormatter.Format(Package(mName, pLevel, pMessage)));
+}
+
+void Wing::Write(std::string record)
+{
+	std::cout << record;
 }
 
 } 

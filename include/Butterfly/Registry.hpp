@@ -4,7 +4,6 @@
 #include <Butterfly/Logger.hpp>
 
 #include <iostream>
-#include <unordered_map>
 
 namespace Butterfly
 {
@@ -17,8 +16,6 @@ public :
 
 	~Registry();
 
-	void Print() const;
-
 	std::shared_ptr<Logger> GetDefaultLogger() const;
 	void SetDefaultLogger(std::shared_ptr<Logger> pLogger);
 
@@ -28,7 +25,6 @@ private :
 	Registry();
 
 	std::shared_ptr<Logger> mDefaultLogger;
-	// std::unordered_map<std::string, std::shared_ptr<Logger>> mLoggers;
 };
 
 }

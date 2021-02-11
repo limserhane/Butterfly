@@ -3,10 +3,6 @@
 namespace Butterfly
 {
 
-Net::Net():
-	Logger{}
-{}
-
 Net::Net(std::string pName):
 	Logger{pName}
 {}
@@ -14,7 +10,7 @@ Net::Net(std::string pName):
 Net::~Net()
 {}
 
-void Net::Log(Level::Value pLevel, std::string pMessage) const
+void Net::Log(Level::Value pLevel, std::string pMessage)
 {
 	for (std::shared_ptr<Logger> logger : mLoggers)
 	{

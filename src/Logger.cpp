@@ -11,11 +11,11 @@ Logger::Logger(std::string pName):
 Logger::~Logger()
 {}
 
-void Logger::Trace(std::string pMessage) const
+void Logger::Trace(std::string pMessage)
 {
 	Log(Level::trace, pMessage);
 }
-void Logger::Error(std::string pMessage) const
+void Logger::Error(std::string pMessage)
 {
 	Log(Level::error, pMessage);
 }

@@ -1,7 +1,7 @@
 #pragma once
 
 #include <Butterfly/Common.hpp>
-#include <Butterfly/Wing.hpp>
+#include <Butterfly/Wings/Wing.hpp>
 
 #include <iostream>
 #include <string>
@@ -13,8 +13,7 @@ namespace Butterfly
 class FileWing : public Wing
 {
 public :
-	FileWing(std::string pFilename, Level::Value pLevel = Level::trace);
-	FileWing(std::string pFilename, std::string pName = "", Level::Value pLevel = Level::trace);
+	FileWing(std::string pName, std::string pFilename);
 
 	~FileWing();
 

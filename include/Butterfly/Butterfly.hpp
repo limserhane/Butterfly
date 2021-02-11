@@ -2,7 +2,7 @@
 
 #include <Butterfly/Common.hpp>
 #include <Butterfly/Net.hpp>
-#include <Butterfly/Wing.hpp>
+#include <Butterfly/Wings/Wing.hpp>
 #include <Butterfly/Registry.hpp>
 
 namespace Butterfly
@@ -10,7 +10,7 @@ namespace Butterfly
 
 std::shared_ptr<Net> CreateNet(std::string pName = "");
 
-template<typename W, typename... Args>
+template<typename W = Wing, typename... Args>
 std::shared_ptr<Logger> CreateWing(Args... args)
 {
 	static_assert(std::is_base_of<Wing, W>::value, "W must derive from Wing class");

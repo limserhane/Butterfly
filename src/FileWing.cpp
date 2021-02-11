@@ -4,20 +4,13 @@
 namespace Butterfly
 {
 
-FileWing::FileWing(Level::Value pLevel):
-	
-{
-
-}
-FileWing::FileWing(std::string pName = "", Level::Value pLevel = Level::trace);
-FileWing::FileWing(std::string pFilename, std::string pName = "", Level::Value pLevel = Level::trace);
-
-FileWing::FileWing(std::string pFilename):
-	mFile(pFilename, std::ios_base::out | std::ios_base::app)
+FileWing::FileWing(std::string pName, std::string pFilename):
+	Wing(pName),
+	mFile(pFilename, std::ios_base::app)
 {
 	if(!mFile.is_open())
 	{
-		ThrowException(BFLY_SOURCE, "Runtime error, cannot open file pFIlename");
+		ThrowException(BFLY_SOURCE, "Runtime error, cannot open file pFilename");
 	}
 }
 

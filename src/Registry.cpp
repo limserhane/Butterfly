@@ -1,28 +1,19 @@
 #include <Butterfly/Registry.hpp>
 
+#include <Butterfly/Wings/Wing.hpp>
 
 namespace Butterfly
 {
 
-Registry::Registry()
+Registry::Registry():
+	mDefaultLogger(std::make_shared<Wing>("default"))
 {}
 
 Registry::~Registry()
-{
-	std::cout << "Registry Destructor\n";
-}
-
-void Registry::Print() const
-{
-	std::cout << "Registry !\n";
-}
+{}
 
 std::shared_ptr<Logger> Registry::GetDefaultLogger() const
 {
-	if(!mDefaultLogger)
-	{
-		ThrowException(BFLY_SOURCE, "Logic error, default logger must be set");
-	}
 	return mDefaultLogger;
 }
 

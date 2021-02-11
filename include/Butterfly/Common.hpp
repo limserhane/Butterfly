@@ -18,6 +18,7 @@ namespace Level
 
 enum Value
 {
+	minimal = -1,
 	trace	= 0,
 	info	= 1,
 	warning	= 2,
