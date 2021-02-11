@@ -24,7 +24,7 @@ void Net::Add(std::shared_ptr<Logger> pLogger)
 {
 	if(!pLogger)
 	{
-		PrintException(BFLY_SOURCE, "pLogger is nullptr");
+		PrintException(BFLY_SOURCE, "inval argument, pLogger is nullptr");
 		return ;
 	}
 
@@ -33,9 +33,9 @@ void Net::Add(std::shared_ptr<Logger> pLogger)
 
 void Net::Remove(std::shared_ptr<Logger> pLogger)
 {
-	if(pLogger == nullptr)
+	if(!pLogger)
 	{
-		PrintException(BFLY_SOURCE, "pLogger is nullptr");
+		PrintException(BFLY_SOURCE, "invalid argument, pLogger is nullptr");
 		return ;
 	}
 
@@ -43,7 +43,7 @@ void Net::Remove(std::shared_ptr<Logger> pLogger)
 
 	if(vLoggerIterator == mLoggers.end())
 	{
-		PrintException(BFLY_SOURCE, "pLogger not found");
+		PrintException(BFLY_SOURCE, "failed, pLogger not found");
 		return ;
 	}
 

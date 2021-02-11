@@ -22,7 +22,7 @@ int main() {
 
     SetDefaultLogger(a);
 
-    Error("Engine stopped working due to work overlaod");
+    Get("engine")->Error("Engine stopped working due to work overlaod");
 
     return 0;
 }

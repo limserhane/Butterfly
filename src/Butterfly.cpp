@@ -7,8 +7,14 @@ namespace Butterfly
 
 std::shared_ptr<Net> CreateNet(std::string pIdentifier)
 {
-	std::shared_ptr<Net> logger = std::make_shared<Net>();
-	return logger;
+	std::shared_ptr<Net> vLogger = std::make_shared<Net>();
+
+	if(!pIdentifier.empty())
+	{
+		Registry::Instance().Add(pIdentifier, vLogger);
+	}
+
+	return vLogger;
 }
 
 std::shared_ptr<Logger> GetDefaultLogger()
@@ -19,6 +25,11 @@ std::shared_ptr<Logger> GetDefaultLogger()
 void SetDefaultLogger(std::shared_ptr<Logger> pLogger)
 {
 	return Registry::Instance().SetDefaultLogger(pLogger);
+}
+
+std::shared_ptr<Logger> Get(std::string pIdentifier)
+{
+	return Registry::Instance().Get(pIdentifier);
 }
 
 void Trace(std::string pMessage)
