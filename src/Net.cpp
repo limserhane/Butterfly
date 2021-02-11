@@ -1,5 +1,7 @@
 #include <Butterfly/Net.hpp>
 
+#include <algorithm>
+
 namespace Butterfly
 {
 
@@ -29,15 +31,23 @@ void Net::Add(std::shared_ptr<Logger> pLogger)
 	mLoggers.push_back(pLogger);
 }
 
-void Net::Remove(size_t pPosition)
+void Net::Remove(std::shared_ptr<Logger> pLogger)
 {
-	if(pPosition >= mLoggers.size())
+	if(pLogger == nullptr)
 	{
-		ThrowException(BFLY_SOURCE, "Out of range, pPosition is invalid position");
+		ThrowException(BFLY_SOURCE, "Invalid argument, pLogger is nullptr");
 		return ;
 	}
 
-	mLoggers.erase(mLoggers.begin() + pPosition);
+	std::vector<std::shared_ptr<Logger>>::iterator vLoggerIterator = std::find(mLoggers.begin(), mLoggers.end(), pLogger);
+
+	if(vLoggerIterator == mLoggers.end())
+	{
+		ThrowException(BFLY_SOURCE, "pLogger not found");
+		return ;
+	}
+
+	mLoggers.erase(vLoggerIterator);
 }
 
 } 
