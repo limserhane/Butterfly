@@ -2,7 +2,7 @@
 
 #include <Butterfly/Common.hpp>
 #include <Butterfly/Net.hpp>
-#include <Butterfly/Wings/Wing.hpp>
+#include <Butterfly/Wing.hpp>
 #include <Butterfly/Registry.hpp>
 
 namespace Butterfly
@@ -29,7 +29,7 @@ void SetDefaultLogger(std::shared_ptr<Logger> pLogger);
 
 std::shared_ptr<Logger> Get(std::string pIdentifier);
 
-void Trace(std::string pMessage);
-void Error(std::string pMessage);
+void Trace(std::string pTag, std::string pMessage);
+void Error(std::string pTag, std::string pMessage);
 	
 } 

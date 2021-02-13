@@ -9,10 +9,10 @@ namespace Butterfly
 
 struct Package
 {
-	Package(std::string pName, Level::Value pLevel, std::string pMessage);
+	Package(Level::Value pLevel, std::string pTag, std::string pMessage);
 
-	std::string Name;
 	Level::Value Level;
+	std::string Tag;
 	std::string Message;
 
 }; 

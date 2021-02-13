@@ -5,9 +5,9 @@
 namespace Butterfly
 {
 
-Package::Package(std::string pName, Level::Value pLevel, std::string pMessage):
-	Name(pName),
+Package::Package(Level::Value pLevel, std::string pTag, std::string pMessage):
 	Level(pLevel),
+	Tag(pTag),
 	Message(pMessage)
 {}
 

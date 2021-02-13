@@ -13,9 +13,6 @@ class PackageFormatter
 public :
 	std::string Format(Package pPackage) const;
 
-protected :
-	void GetDateTime(char* pBuffer, size_t pBufferSize) const;
-
 }; 
 
 } 

@@ -1,8 +1,7 @@
 
 #include <Butterfly/Butterfly.hpp>
-#include <Butterfly/Wings/Wing.hpp>
 #include <Butterfly/Wings/FileWing.hpp>
-#include <Butterfly/Net.hpp>
+#include <Butterfly/Wings/ConsoleWing.hpp>
 
 #include <iostream>
 
@@ -11,18 +10,24 @@ using namespace std;
 
 int main() {
 
-    std::shared_ptr<Net> a = CreateNet("engine");
-    std::shared_ptr<Logger> b = CreateWing("", "engine");
-    std::shared_ptr<Logger> c = CreateWing<FileWing>("", "engine", "bin/log-engine.txt");
-    
-    a->Add(b);
-    a->Add(c);
+    auto console = CreateWing<ConsoleWing>("");
+    auto logfile = CreateWing<FileWing>("", "bin/log.txt");
 
-    Trace("Butterflies all havin' fun !");
+    auto enginelogger = CreateNet("engine");
+    enginelogger->Add(console);
+    enginelogger->Add(logfile);
 
-    SetDefaultLogger(a);
+    auto networklogger = CreateNet("network");
+    networklogger->Add(console);
+    networklogger->Add(logfile);
 
-    Get("engine")->Error("Engine stopped working due to work overlaod");
+    Trace("Butterfly", "Butterflies all havin' fun !");
+
+    SetDefaultLogger(enginelogger);
+
+    Get("engine")->Error("engine", "work overload due to low processing frequency");
+
+    Get("network")->Trace("network", "[192.168.1.18:80] sent https requst");
 
     return 0;
 }

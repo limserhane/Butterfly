@@ -12,11 +12,11 @@ Net::Net():
 Net::~Net()
 {}
 
-void Net::Log(Level::Value pLevel, std::string pMessage)
+void Net::Log(Level::Value pLevel, std::string pTag, std::string pMessage)
 {
 	for (std::shared_ptr<Logger> logger : mLoggers)
 	{
-		logger->Log(pLevel, pMessage);
+		logger->Log(pLevel, pTag, pMessage);
 	}
 }
 

@@ -1,6 +1,6 @@
 #include <Butterfly/Registry.hpp>
 
-#include <Butterfly/Wings/Wing.hpp>
+#include <Butterfly/Wings/ConsoleWing.hpp>
 
 #include <utility>
 
@@ -8,7 +8,7 @@ namespace Butterfly
 {
 
 Registry::Registry():
-	mDefaultLogger(std::make_shared<Wing>("default"))
+	mDefaultLogger(std::make_shared<ConsoleWing>())
 {}
 
 Registry::~Registry()

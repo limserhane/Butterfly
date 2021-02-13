@@ -14,13 +14,11 @@ public :
 
 	virtual ~ Logger();
 
-	virtual void Log(Level::Value pLevel, std::string pMessage) = 0;
+	virtual void Log(Level::Value pLevel, std::string pTag, std::string pMessage) = 0;
 
-	virtual void Trace(std::string pMessage) final;
-	virtual void Error(std::string pMessage) final;
+	virtual void Trace(std::string pTag, std::string pMessage) final;
+	virtual void Error(std::string pTag, std::string pMessage) final;
 
-protected :
-	
 }; 
 
 } 
