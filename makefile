@@ -55,7 +55,7 @@ $(LIBRARY) : $(OBJECTS)
 # Build example
 $(EXAMPLE) : $(EXAMPLEDIR)example.cpp $(LIBRARY)
 	@echo "Building $(notdir $@)"
-	@$(CC) $(CCFLAGS) -I $(INCLUDEDIR) -L$(BINDIR) $^ -o $@
+	@$(CC) $(CCFLAGS) -I $(INCLUDEDIR) -L$(BINDIR) $^ -o $@ -lpthread
 
 sandbox : $(LIBRARY)
 	@echo "Building sandbox.out"

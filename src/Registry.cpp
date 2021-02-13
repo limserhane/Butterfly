@@ -9,7 +9,9 @@ namespace Butterfly
 
 Registry::Registry():
 	mDefaultLogger(std::make_shared<ConsoleWing>())
-{}
+{
+	GetDefaultLogger()->Trace("Butterfly", "Butterflies all havin' fun !");
+}
 
 Registry::~Registry()
 {}
@@ -34,7 +36,6 @@ void Registry::Add(std::string pIdentifier, std::shared_ptr<Logger> pLogger)
 {
 	if(pIdentifier.empty())
 	{
-		PrintException(BFLY_SOURCE, "invalid argument, pIdentifier is empty string");
 		return ;
 	}
 
@@ -57,7 +58,6 @@ void Registry::Remove(std::string pIdentifier)
 {
 	if(pIdentifier.empty())
 	{
-		PrintException(BFLY_SOURCE, "invalid argument, pIdentifier is empty string");
 		return ;
 	}
 

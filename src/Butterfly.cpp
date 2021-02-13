@@ -7,14 +7,26 @@ namespace Butterfly
 
 std::shared_ptr<Net> CreateNet(std::string pIdentifier)
 {
-	std::shared_ptr<Net> vLogger = std::make_shared<Net>();
+	std::shared_ptr<Net> lLogger = std::make_shared<Net>();
 
-	if(!pIdentifier.empty())
+	Registry::Instance().Add(pIdentifier, lLogger);
+
+	return lLogger;
+}
+
+std::shared_ptr<SafeLogger> CreateSafeLogger(std::string pIdentifier, std::shared_ptr<Logger> pLogger)
+{
+	if(!pLogger)
 	{
-		Registry::Instance().Add(pIdentifier, vLogger);
+		ThrowException(BFLY_SOURCE, "invalid argument, pLogger is nullptr");
+		return nullptr;
 	}
 
-	return vLogger;
+	std::shared_ptr<SafeLogger> lSafeLogger = std::make_shared<SafeLogger>(pLogger);
+
+	Registry::Instance().Add(pIdentifier, lSafeLogger);
+
+	return lSafeLogger;
 }
 
 std::shared_ptr<Logger> GetDefaultLogger()

@@ -16,7 +16,7 @@ Wing::~Wing()
 
 void Wing::Log(Level::Value pLevel, std::string pTag, std::string pMessage)
 {
-	if(pLevel > mLevel)
+	if(pLevel < mLevel)
 	{
 		return ;
 	}
