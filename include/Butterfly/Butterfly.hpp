@@ -14,6 +14,7 @@ template<typename W = Wing, typename... Args>
 std::shared_ptr<Logger> CreateWing(std::string pIdentifier, Args... args)
 {
 	static_assert(std::is_base_of<Wing, W>::value, "W must be derived from Wing");
+	
 	std::shared_ptr<Logger> vLogger = std::make_shared<W>(args...);
 
 	if(!pIdentifier.empty())

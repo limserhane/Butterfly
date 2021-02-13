@@ -4,8 +4,12 @@
 namespace Butterfly
 {
 
+ConsoleWing::ConsoleWing(Level::Value pLevel):
+	Wing(pLevel)
+{}
+
 ConsoleWing::ConsoleWing():
-	Wing()
+	Wing(Level::minimal)
 {}
 
 ConsoleWing::~ConsoleWing()

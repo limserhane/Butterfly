@@ -13,7 +13,7 @@ namespace Butterfly
 class Wing : public Logger
 {
 public :
-	Wing();
+	Wing(Level::Value pLevel = Level::minimal);
 
 	virtual ~Wing();
 
@@ -22,6 +22,7 @@ public :
 protected :
 	virtual void Write(std::string record) = 0;
 
+	Level::Value mLevel;
 	PackageFormatter mFormatter;
 
 }; 

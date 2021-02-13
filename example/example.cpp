@@ -10,7 +10,7 @@ using namespace std;
 
 int main() {
 
-    auto console = CreateWing<ConsoleWing>("");
+    auto console = CreateWing<ConsoleWing>("", Level::warning);
     auto logfile = CreateWing<FileWing>("", "bin/log.txt");
 
     auto enginelogger = CreateNet("engine");

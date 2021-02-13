@@ -10,6 +10,7 @@ namespace Butterfly
 class ConsoleWing : public Wing
 {
 public :
+	ConsoleWing(Level::Value pLevel);
 	ConsoleWing();
 
 	~ConsoleWing();
