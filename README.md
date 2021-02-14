@@ -31,7 +31,8 @@ Grab the `bin/libbutterfly.a` static library and the `include/butterfly/` includ
 
 ## Usage
 
-* 
+Examples to find in the `example/` folder.  
+More details to come.  
 
 ---
 
@@ -46,4 +47,4 @@ Grab the `bin/libbutterfly.a` static library and the `include/butterfly/` includ
 >
 > *And a bold world for me*  
 
-![Image of Nina Simone](https://www.numero.com/sites/default/files/images/article/homepage/full/nina-simone-fodder-on-my-wings-album-numero-magazine.jpg)
+![Picture of Nina Simone](https://www.numero.com/sites/default/files/images/article/homepage/full/nina-simone-fodder-on-my-wings-album-numero-magazine.jpg)
