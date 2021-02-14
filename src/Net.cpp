@@ -43,7 +43,7 @@ void Net::Remove(std::shared_ptr<Logger> pLogger)
 
 	if(vLoggerIterator == mLoggers.end())
 	{
-		PrintException(BFLY_SOURCE, "failed, pLogger not found");
+		PrintException(BFLY_SOURCE, "invalid argument, pLogger not found");
 		return ;
 	}
 

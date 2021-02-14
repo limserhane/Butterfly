@@ -65,7 +65,7 @@ void Registry::Remove(std::string pIdentifier)
 
 	if(!vEraseResult)
 	{
-		PrintException(BFLY_SOURCE, "failed, pIdentifier not found");
+		PrintException(BFLY_SOURCE, "invalid argument, pIdentifier not found");
 		return ;
 	}
 }
