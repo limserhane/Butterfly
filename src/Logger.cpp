@@ -10,13 +10,13 @@ Logger::Logger()
 Logger::~Logger()
 {}
 
-void Logger::Trace(std::string pTag, std::string pMessage)
+void Logger::Trace(std::string pTag, std::string pMessage, Source pSource)
 {
-	Log(Level::trace, pTag, pMessage);
+	Log(Level::trace, pTag, pMessage, pSource);
 }
-void Logger::Error(std::string pTag, std::string pMessage)
+void Logger::Error(std::string pTag, std::string pMessage, Source pSource)
 {
-	Log(Level::error, pTag, pMessage);
+	Log(Level::error, pTag, pMessage, pSource);
 }
 
 } 

@@ -18,7 +18,7 @@ int main() {
 	logger->Add(consoleLogger);
 	logger->Add(fileLogger);
 
-	logger->Error("Network", "Network service unavailable"); // I can use logger to Log
+	logger->Error("Network", "Network service unavailable", BFLY_SOURCE); // I can use logger to Log
 
 	SetDefaultLogger(logger); // Or I can set logger as the default logger ...
 

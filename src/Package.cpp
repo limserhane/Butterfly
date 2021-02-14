@@ -5,7 +5,8 @@
 namespace Butterfly
 {
 
-Package::Package(Level::Value pLevel, std::string pTag, std::string pMessage):
+Package::Package(Source pSource, Level::Value pLevel, std::string pTag, std::string pMessage):
+	Location(pSource),
 	Level(pLevel),
 	Tag(pTag),
 	Message(pMessage)

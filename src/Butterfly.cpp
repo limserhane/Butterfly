@@ -44,14 +44,14 @@ std::shared_ptr<Logger> Get(std::string pIdentifier)
 	return Registry::Instance().Get(pIdentifier);
 }
 
-void Trace(std::string pTag, std::string pMessage)
+void Trace(std::string pTag, std::string pMessage, Source pSource)
 {
-	Registry::Instance().GetDefaultLogger()->Trace(pTag, pMessage);
+	Registry::Instance().GetDefaultLogger()->Trace(pTag, pMessage, pSource);
 }
 
-void Error(std::string pTag, std::string pMessage)
+void Error(std::string pTag, std::string pMessage, Source pSource)
 {
-	Registry::Instance().GetDefaultLogger()->Error(pTag, pMessage);
+	Registry::Instance().GetDefaultLogger()->Error(pTag, pMessage, pSource);
 }
 
 }

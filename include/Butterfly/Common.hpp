@@ -35,6 +35,7 @@ std::string ToString(Level::Value pLevel);
 
 struct Source
 {
+	Source();
 	Source(std::string pFile, int pLine, std::string pFunction, std::string pPrettyFunction);
 	Source(const Source& other);
 

@@ -18,15 +18,22 @@ std::string ToString(Level::Value pLevel)
 	return "";
 }
 
+Source::Source():
+	File(),
+	Line(),
+	Function(),
+	PrettyFunction()
+{}
+
 Source::Source(std::string pFile, int pLine, std::string pFunction, std::string pPrettyFunction):
-	File{pFile},
-	Line{pLine},
-	Function{pFunction},
-	PrettyFunction{pPrettyFunction}
+	File(pFile),
+	Line(pLine),
+	Function(pFunction),
+	PrettyFunction(pPrettyFunction)
 {} 
 
 Source::Source(const Source& other):
-	Source{other.File, other.Line, other.Function, other.PrettyFunction}
+	Source(other.File, other.Line, other.Function, other.PrettyFunction)
 {} 
 
 Exception::Exception(Source pSource, std::string pDetails)

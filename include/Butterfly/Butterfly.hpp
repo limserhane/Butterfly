@@ -31,7 +31,7 @@ void SetDefaultLogger(std::shared_ptr<Logger> pLogger);
 
 std::shared_ptr<Logger> Get(std::string pIdentifier);
 
-void Trace(std::string pTag, std::string pMessage);
-void Error(std::string pTag, std::string pMessage);
+void Trace(std::string pTag, std::string pMessage, Source pSource = Source());
+void Error(std::string pTag, std::string pMessage, Source pSource = Source());
 	
 } 

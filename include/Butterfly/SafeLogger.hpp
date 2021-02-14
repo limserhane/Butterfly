@@ -15,7 +15,7 @@ public :
 
 	~SafeLogger();
 
-	virtual void Log(Level::Value pLevel, std::string pTag, std::string pMessage) override;
+	virtual void Log(Level::Value pLevel, std::string pTag, std::string pMessage, Source pSource = Source()) override;
 
 private :
 	std::shared_ptr<Logger> mLogger;

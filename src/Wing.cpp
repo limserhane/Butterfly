@@ -14,14 +14,14 @@ Wing::Wing(Level::Value pLevel):
 Wing::~Wing()
 {}
 
-void Wing::Log(Level::Value pLevel, std::string pTag, std::string pMessage)
+void Wing::Log(Level::Value pLevel, std::string pTag, std::string pMessage, Source pSource)
 {
 	if(pLevel < mLevel)
 	{
 		return ;
 	}
 	
-	Write(mFormatter.Format(Package(pLevel, pTag, pMessage)));
+	Write(mFormatter.Format(Package(pSource, pLevel, pTag, pMessage)));
 }
 
 } 
