@@ -31,8 +31,11 @@ Grab the `bin/libbutterfly.a` static library and the `include/butterfly/` includ
 
 ## Usage
 
+Documentation is coming.
+
+## Usage
+
 Examples to find in the `example/` folder.  
-More details to come.  
 
 ---
 
