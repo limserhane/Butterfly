@@ -1,22 +1,24 @@
 # Directories
-# PROJDIR := $(realpath $(CURDIR))/
-SRCDIR     := src/
-INCLUDEDIR := include/
-EXAMPLEDIR := example/
-BUILDDIR   := build/
-BINDIR     := bin/
+# PROJDIR := $(realpath $(CURDIR)/)/
+SRCDIR     := src
+INCLUDEDIR := include
+EXAMPLEDIR := example
+BUILDDIR   := build
+BINDIR     := bin
+BINEXAMPLEDIR := $(BINDIR)/$(EXAMPLEDIR)/
 
 # 
-SOURCES := $(wildcard $(SRCDIR)*.cpp)
-OBJECTS := $(subst $(SRCDIR), $(BUILDDIR), $(SOURCES:.cpp=.o))
+SOURCES := $(wildcard $(SRCDIR)/*.cpp)
+OBJECTS := $(subst $(SRCDIR)/, $(BUILDDIR)/, $(SOURCES:.cpp=.o))
 
 # Library
-NAME	:= butterfly
-LIBNAME := lib$(strip $(NAME)).a
-LIBRARY := $(BINDIR)$(LIBNAME)
+LIBNAME	:= butterfly
+LIBFILENAME := lib$(strip $(LIBNAME)).a
+LIBPATH := $(BINDIR)/$(LIBFILENAME)
 
 # Example
-EXAMPLE := $(BINDIR)example.out
+EXAMPLESOURCES := $(wildcard $(EXAMPLEDIR)/*.cpp)
+EXAMPLES := $(addprefix $(BINEXAMPLEDIR), $(notdir $(EXAMPLESOURCES:.cpp=.out)))
 
 # Compiler
 CC = g++ -std=c++17
@@ -27,36 +29,39 @@ AR = ar rcs
 MKDIR := mkdir -p
 RM := rm -rf
 
-.PHONY : all directories clean sandbox run
+.PHONY : all build rebuild directories clean examples
 
-# all : rebuild
+build : directories $(LIBPATH) examples
 
-build : directories $(LIBRARY) $(EXAMPLE)
+all : rebuild
 
 rebuild : clean build
 
 directories :
-	@$(MKDIR) $(BUILDDIR) $(BINDIR)
+	@ $(MKDIR) $(BUILDDIR) $(BINDIR) $(BINDIR)/$(EXAMPLEDIR)
 
 clean : 
-	@echo "Cleaning up project builds"
-	@$(RM) $(BUILDDIR)* $(BINDIR)*
+	@ echo "Cleaning up project builds"
+	@ $(RM) $(BUILDDIR)/* $(BINDIR)/*
+	@ $(RM) log-*.txt
 
-# Build objects
-$(BUILDDIR)%.o : $(SRCDIR)%.cpp
-	@echo "Building $(notdir $@)" 
-	@$(CC) $(CCFLAGS) -I $(INCLUDEDIR) -c $< -o $@
+examples : $(LIBPATH) $(EXAMPLES)
 
-# Build static library
-$(LIBRARY) : $(OBJECTS)
-	@echo "Building $(notdir $@)"
-	@$(AR) $@ $^
+#########################################################
+######################	RULES	#########################
+#########################################################
 
-# Build example
-$(EXAMPLE) : $(EXAMPLEDIR)example.cpp $(LIBRARY)
-	@echo "Building $(notdir $@)"
-	@$(CC) $(CCFLAGS) -I $(INCLUDEDIR) -L$(BINDIR) $^ -o $@ -lpthread
+# build/objects
+$(BUILDDIR)/%.o : $(SRCDIR)/%.cpp
+	@ echo "Building $(@F)" 
+	@ $(CC) $(CCFLAGS) -I $(INCLUDEDIR)/ -c $< -o $@ 
 
-sandbox : $(LIBRARY)
-	@echo "Building sandbox.out"
-	@$(CC) $(CCFLAGS) -I $(INCLUDEDIR) sandbox/*.cpp -o sandbox/sandbox.out -L$(BINDIR) $^
+# bin/lib
+$(LIBPATH) : $(OBJECTS)
+	@ echo "Building $(@F)"
+	@ $(AR) $@ $^
+
+# bin/example-
+$(BINDIR)/$(EXAMPLEDIR)/%.out : $(EXAMPLEDIR)/%.cpp $(LIBPATH) 
+	@ echo "Building $(@F)"
+	@ $(CC) $(CCFLAGS) -I $(INCLUDEDIR) -L$(BINDIR) $< -o $@ -l$(LIBNAME) -lpthread 
