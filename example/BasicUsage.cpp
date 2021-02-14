@@ -10,7 +10,7 @@ using namespace std;
 
 int main() {
 
-	auto consoleLogger = CreateWing<ConsoleWing>("", Level::warning); // will only log records that have a warning or higher level
+	auto consoleLogger = CreateWing<ConsoleWing>("", Level::warning, "{pattern}"); // will only log records that have a warning or higher level
 
 	auto fileLogger = CreateWing<FileWing>("", "log-basic-usage.txt"); // will log all records (no level specified)
 
@@ -18,7 +18,7 @@ int main() {
 	logger->Add(consoleLogger);
 	logger->Add(fileLogger);
 
-	logger->Error("Network", "Network service unavailable", BFLY_SOURCE); // I can use logger to Log
+	logger->Error("Network", "Network service unavailable"); // I can use logger to Log
 
 	SetDefaultLogger(logger); // Or I can set logger as the default logger ...
 

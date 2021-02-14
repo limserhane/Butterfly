@@ -11,8 +11,14 @@ namespace Butterfly
 class PackageFormatter
 {
 public :
-	std::string Format(Package pPackage) const;
+	PackageFormatter(std::string pPattern = "");
 
+	virtual std::string Format(Package pPackage) const;
+
+protected :
+	static std::string Compile(std::string pPattern);
+
+	std::string mFormat;
 }; 
 
 } 

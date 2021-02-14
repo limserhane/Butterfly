@@ -13,8 +13,8 @@ namespace Butterfly
 class FileWing : public Wing
 {
 public :
-	FileWing(std::string pFilename, Level::Value pLevel);
-	FileWing(std::string pFilename);
+	FileWing(std::string pFilename, Level::Value pLevel = Level::minimal, std::string pPattern = "");
+	FileWing(std::string pFilename, std::string pPattern);
 
 	~FileWing();
 

@@ -10,9 +10,13 @@ namespace Butterfly
 class ConsoleWing : public Wing
 {
 public :
-	ConsoleWing(Level::Value pLevel);
-	ConsoleWing();
+	
+	ConsoleWing(Level::Value pLevel = Level::minimal, std::string pPattern = "");
 
+	ConsoleWing(std::string pPattern);
+
+	// copy constructor ?
+	
 	~ConsoleWing();
 
 private :

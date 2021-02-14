@@ -5,10 +5,14 @@
 namespace Butterfly
 {
 
-Wing::Wing(Level::Value pLevel):
+Wing::Wing(Level::Value pLevel, std::string pPattern):
 	Logger(),
 	mLevel(pLevel),
-	mFormatter()
+	mFormatter(pPattern)
+{}
+
+Wing::Wing(std::string pPattern):
+	Wing(Level::minimal, pPattern)
 {}
 
 Wing::~Wing()

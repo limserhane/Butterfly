@@ -31,9 +31,9 @@ RM := rm -rf
 
 .PHONY : all build rebuild directories clean examples
 
-build : directories $(LIBPATH) examples
-
 all : rebuild
+
+build : directories $(LIBPATH) examples
 
 rebuild : clean build
 
