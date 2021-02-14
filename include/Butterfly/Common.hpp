@@ -18,19 +18,20 @@ namespace Level
 
 enum Value
 {
-	minimal = -1,
+	off		= -1,
+	minimal = 0,
 	trace	= 0,
 	info	= 1,
 	warning	= 2,
 	error	= 3,
 	fatal	= 4,
 	debug	= 5,
-	n
+	all	
 };
 
-std::string GetName(Level::Value pLevel);
+}
 
-} 
+std::string ToString(Level::Value pLevel);
 
 struct Source
 {
