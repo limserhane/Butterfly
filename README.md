@@ -29,7 +29,7 @@ Grab the `bin/libbutterfly.a` static library and the `include/butterfly/` includ
 
 * 
 
-## Usage
+## Documentation
 
 Documentation is coming.
 
