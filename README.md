@@ -12,7 +12,7 @@ This library uses `c++17` standard only. It is available for Linux, Windows and 
 
 Butterfly is developped to be used as a static library (not as a shared library or a header-only).
 
-The provided makefile compiles the library for Linux systems only.
+The provided makefile compiles the library for Linux systems.
 ```
 $ git clone https://github.com/limserhane/Butterfly.git
 $ cd Butterfly/
