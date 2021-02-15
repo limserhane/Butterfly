@@ -31,8 +31,10 @@ void bar()
 
 int main() {
 
+	// This logger is not safe to concurrent accesses
 	auto unsafelogger = CreateWing<FileWing>("unsafe", "log-unsafe-thread-safe-usage.txt");
 
+	// This logger can be safely accessed by concurrent threads
 	auto safelogger = CreateSafeLogger("safe", 
 		CreateWing<FileWing>("", "log-safe-thread-safe-usage.txt")
 	);
