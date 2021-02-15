@@ -46,8 +46,6 @@ Grab the `bin/libbutterfly.a` static library and the `include/butterfly/` includ
 
 ## Upcoming features
 
-* All levels
-
 * Optimization
 	* Move semantic
 	* String optimization (`string_litterals`, `string_view`s, ...)
