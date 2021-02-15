@@ -4,8 +4,8 @@
 namespace Butterfly
 {
 
-FileWing::FileWing(std::string pFilename, Level::Value pLevel, std::string pPattern):
-	Wing(pLevel, pPattern),
+FileWing::FileWing(std::string pFilename, Level::Value pLevel, PackageFormatter pFormatter):
+	Wing(pLevel, pFormatter),
 	mFile(pFilename, std::ios_base::app)
 {
 	if(!mFile.is_open())
@@ -14,8 +14,8 @@ FileWing::FileWing(std::string pFilename, Level::Value pLevel, std::string pPatt
 	}
 }
 
-FileWing::FileWing(std::string pFilename, std::string pPattern):
-	FileWing(pFilename, Level::minimal, pPattern)
+FileWing::FileWing(std::string pFilename, PackageFormatter pFormatter):
+	FileWing(pFilename, Level::minimal, pFormatter)
 {}
 
 FileWing::~FileWing()

@@ -11,7 +11,9 @@ namespace Butterfly
 class PackageFormatter
 {
 public :
-	PackageFormatter(std::string pPattern = "");
+	PackageFormatter(const char* pPattern = "");
+
+	PackageFormatter(const PackageFormatter& pOther);
 
 	virtual std::string Format(Package pPackage) const;
 

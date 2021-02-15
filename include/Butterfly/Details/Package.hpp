@@ -15,7 +15,6 @@ struct Package
 	Level::Value Level;
 	std::string Tag;
 	std::string Message;
-
 }; 
 
 } 

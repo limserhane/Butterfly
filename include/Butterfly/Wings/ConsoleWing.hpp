@@ -11,9 +11,8 @@ class ConsoleWing : public Wing
 {
 public :
 	
-	ConsoleWing(Level::Value pLevel = Level::minimal, std::string pPattern = "");
-
-	ConsoleWing(std::string pPattern);
+	ConsoleWing(Level::Value pLevel = Level::minimal, PackageFormatter pFormatter = PackageFormatter());
+	ConsoleWing(PackageFormatter pFormatter);
 
 	// copy constructor ?
 	

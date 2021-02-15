@@ -5,8 +5,12 @@
 namespace Butterfly
 {
 
-PackageFormatter::PackageFormatter(std::string pPattern):
+PackageFormatter::PackageFormatter(const char* pPattern):
 	mFormat(Compile(pPattern))
+{}
+
+PackageFormatter::PackageFormatter(const PackageFormatter& pOther):
+	mFormat(pOther.mFormat)
 {}
 
 std::string PackageFormatter::Format(Package pPackage) const
