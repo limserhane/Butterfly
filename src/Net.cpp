@@ -9,6 +9,12 @@ Net::Net():
 	Logger()
 {}
 
+Net::Net(std::initializer_list<std::shared_ptr<Logger>> pLoggers):
+	Net()
+{
+	Add(pLoggers);
+}
+
 Net::~Net()
 {}
 
@@ -29,6 +35,14 @@ void Net::Add(std::shared_ptr<Logger> pLogger)
 	}
 
 	mLoggers.push_back(pLogger);
+}
+
+void Net::Add(std::initializer_list<std::shared_ptr<Logger>> pLoggers)
+{
+	for (auto lLogger : pLoggers)
+	{
+		Add(lLogger);
+	}
 }
 
 void Net::Remove(std::shared_ptr<Logger> pLogger)
