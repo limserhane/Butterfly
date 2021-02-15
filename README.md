@@ -109,7 +109,7 @@ Examples to find in the `example/` folder.
 	std::thread foothread(foo);
 	std::thread barthread(bar);
 
-	// Here foo() and bar() are concurrent; but the "logfile" logger will safely write in "bin/log.txt"
+	// Here foo() and bar() are concurrent; but the "safe" logger will safely write in "bin/log.txt"
 
 	foothread.join();
 	barthread.join();
