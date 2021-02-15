@@ -5,9 +5,9 @@
 namespace Butterfly
 {
 
-std::shared_ptr<Net> CreateNet(std::string pIdentifier)
+std::shared_ptr<Net> CreateNet(std::string pIdentifier, std::initializer_list<std::shared_ptr<Logger>> pLoggers)
 {
-	std::shared_ptr<Net> lLogger = std::make_shared<Net>();
+	std::shared_ptr<Net> lLogger = std::make_shared<Net>(pLoggers);
 
 	Registry::Instance().Add(pIdentifier, lLogger);
 

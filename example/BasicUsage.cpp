@@ -14,9 +14,7 @@ int main() {
 
 	auto fileLogger = CreateWing<FileWing>("", "log-basic-usage.txt"); // will log all records (no level specified)
 
-	auto logger = CreateNet("");
-	logger->Add(consoleLogger);
-	logger->Add(fileLogger);
+	auto logger = CreateNet("", {consoleLogger, fileLogger});
 
 	logger->Error("Network", "Network service unavailable"); // I can use logger to Log
 

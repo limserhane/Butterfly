@@ -65,6 +65,7 @@ public :
 	static constexpr const char* SimplePattern = "[{level:}] [{tag:}] {message:}\n";
 	static constexpr const char* CompletePattern = "{time:%F %T} [{level:}] [{tag:}] {message:}\n";
 	static constexpr const char* DebugPattern = "[{pfunc:}] [{level:}] [{tag:}] {message:}\n";
+	
 }; 
 
 } 

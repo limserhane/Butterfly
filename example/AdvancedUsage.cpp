@@ -10,8 +10,10 @@ using namespace std;
 
 void CriticalTask()
 { 
-	// I can retrieve the "main" logger from anywhere
+	// "main" logger is the default logger
 	Trace("Engine", "Engine initialization complete"); // this is a trace so it won't Log
+
+	// I can retrieve the "main" logger from anywhere
 	Get("main")->Error("Engine", "Engine initialization failed"); // this is an error so it will Log
 	
 	// I can retrieve the "network" logger from anywhere
@@ -23,12 +25,8 @@ void ButterflyInitialization()
 {
 	auto consoleLogger = CreateWing<ConsoleWing>("main", Level::warning); // "main" logger will Log in the console
 
-	auto networklogger = CreateNet("network"); // "network" logger will Log both ...
-	networklogger->Add(consoleLogger); // ... in the console
-	networklogger->Add(
-		CreateWing<FileWing>("", "log-advanced-usage.txt") // ... and in the file
-	);
-
+	auto networklogger = CreateNet("network", {consoleLogger, CreateWing<FileWing>("", "log-advanced-usage.txt")}); // "network" logger will Log both in the console and in the file
+	
 	SetDefaultLogger(consoleLogger);
 }
 
