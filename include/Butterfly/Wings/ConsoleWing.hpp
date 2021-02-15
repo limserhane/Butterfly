@@ -7,19 +7,24 @@
 namespace Butterfly
 {
 
+/**
+ * @brief A concrete Wing used to log records into the standard output.
+ */
 class ConsoleWing : public Wing
 {
 public :
 	
 	ConsoleWing(Level::Value pLevel = Level::minimal, PackageFormatter pFormatter = PackageFormatter::SimplePattern);
 	ConsoleWing(PackageFormatter pFormatter);
-
-	// copy constructor ?
 	
 	~ConsoleWing();
 
 private :
-	virtual void Write(std::string record) override;
+	/**
+	 * @brief Writes a log into the standard output.
+	 * @param pRecord The record to be logged;
+	 */
+	virtual void Write(std::string pRecord) override;
 
 };
 

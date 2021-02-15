@@ -16,23 +16,33 @@ class Net;
 namespace Level 
 {
 
+/**
+ * @brief The severity levels of the logs.
+ */
 enum Value
 {
-	off		= -1,
-	minimal = 0,
-	trace	= 0,
-	info	= 1,
-	warning	= 2,
-	error	= 3,
-	fatal	= 4,
-	debug	= 5,
-	all	
+	all		= -1, // The level used to specify that a logger must not log anything;
+	minimal = 0, // The minimal level that logs can have;
+	trace	= 0, // The level of a trace;
+	info	= 1, // The level of an info;
+	warning	= 2, // The level of a warning;
+	error	= 3, // The level of an error;
+	fatal	= 4, // The level of a fatal error;
+	debug	= 5, // The level of a debug log;
+	off			 // The level used to specify that a logger must log everything;
 };
 
 }
-
+/**
+ * @brief Converts a Level value into its string representation.
+ * @param pLevel The level value to be converted;
+ * @return The string representation of \p pLevel
+ */
 std::string ToString(Level::Value pLevel);
 
+/**
+ * @brief A structure containing informations about a location in the source code.
+ */
 struct Source
 {
 	Source();
@@ -46,8 +56,9 @@ struct Source
 
 }; 
 
-#define BFLY_SOURCE Source(__FILE__, __LINE__, __func__, __PRETTY_FUNCTION__)
-
+/**
+ * @brief A basic exception used by Butterfly.
+ */
 class Exception : public std::exception
 {
 public :
@@ -63,7 +74,20 @@ private :
 
 }; 
 
+/**
+ * @brief Throws an exception.
+ * @param pSource The location of the exception;
+ * @param pDetails Details about the exception;
+ */
 void ThrowException(Source pSource, std::string pDetails);
+
+/**
+ * @brief Writes an exception on the standard output for errors.
+ * @param pSource The location of the exception;
+ * @param pDetails Details about the exception;
+ */
 void PrintException(Source pSource, std::string pDetails);
 
 } 
+
+#define BFLY_SOURCE Butterfly::Source(__FILE__, __LINE__, __func__, __PRETTY_FUNCTION__)

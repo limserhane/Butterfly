@@ -15,9 +15,9 @@ ConsoleWing::ConsoleWing(PackageFormatter pFormatter):
 ConsoleWing::~ConsoleWing()
 {}
 
-void ConsoleWing::Write(std::string record)
+void ConsoleWing::Write(std::string pRecord)
 {
-	std::cout << record;
+	std::cout << pRecord;
 }
 
 }

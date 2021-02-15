@@ -10,6 +10,9 @@
 namespace Butterfly
 {
 
+/**
+ * @brief An logger interface used to write a record.
+ */
 class Wing : public Logger
 {
 public :
@@ -18,10 +21,21 @@ public :
 
 	virtual ~Wing();
 
+	/**
+	 * @brief Logs a record using the Write function defined by the class.
+	 * @param pLevel The level to be logged;
+	 * @param pTag The tag of the record to log;
+	 * @param pMessage The message of the record to log;
+	 * @param pSource The source of the call to the log function;
+	 */
 	virtual void Log(Level::Value pLevel, std::string pTag, std::string pMessage, Source pSource = Source()) override;
 
 protected :
-	virtual void Write(std::string record) = 0;
+	/**
+	 * @brief Writes a record.
+	 * @param pRecord The record the be logged;
+	 */
+	virtual void Write(std::string pRecord) = 0;
 
 	Level::Value mLevel;
 	PackageFormatter mFormatter;

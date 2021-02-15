@@ -8,6 +8,9 @@
 namespace Butterfly
 {
 
+/**
+ * @brief A decorator for a logger used to ensure the thread-safety log operations on the decorated logger.
+ */
 class SafeLogger : public Logger
 {
 public :
@@ -15,6 +18,13 @@ public :
 
 	~SafeLogger();
 
+	/**
+	 * @brief Safely (from concurrent accesses) logs a record using the decorated logger
+	 * @param pLevel The level to be logged;
+	 * @param pTag The tag of the record to log;
+	 * @param pMessage The message of the record to log;
+	 * @param pSource The source of the call to the log function;
+	 */
 	virtual void Log(Level::Value pLevel, std::string pTag, std::string pMessage, Source pSource = Source()) override;
 
 private :

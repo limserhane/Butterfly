@@ -10,6 +10,9 @@
 namespace Butterfly
 {
 
+/**
+ * @brief A concrete Wing used to log records into a given file.
+ */
 class FileWing : public Wing
 {
 public :
@@ -19,7 +22,11 @@ public :
 	~FileWing();
 
 private :
-	virtual void Write(std::string record) override;
+	/**
+	 * @brief Writes a log into its file.
+	 * @param pRecord The record to be logged;
+	 */
+	virtual void Write(std::string pRecord) override;
 
 	std::ofstream mFile;
 
