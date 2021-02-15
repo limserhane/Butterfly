@@ -65,54 +65,54 @@ Examples to find in the `example/` folder.
     
 ### Basic usage
  ```c++
-	auto consoleLogger = CreateWing<ConsoleWing>("", Level::warning); // Will only write in the console records that have a warning or higher level
+auto consoleLogger = CreateWing<ConsoleWing>("", Level::warning); // Will only write in the console records that have a warning or higher level
 
-	auto fileLogger = CreateWing<FileWing>("", "log-basic-usage.txt"); // Will write in the "log-basic-usage.txt" file all records (no level specified)
+auto fileLogger = CreateWing<FileWing>("", "log-basic-usage.txt"); // Will write in the "log-basic-usage.txt" file all records (no level specified)
 
-	auto logger = CreateNet("", {consoleLogger, fileLogger}); // Will log both in the console logger and in the file logger
+auto logger = CreateNet("", {consoleLogger, fileLogger}); // Will log both in the console logger and in the file logger
 
-	logger->Error("Network", "Network service unavailable"); // I can use logger to Log
+logger->Error("Network", "Network service unavailable"); // I can use logger to Log
 
-	SetDefaultLogger(logger); // Or I can set logger as the default logger ...
+SetDefaultLogger(logger); // Or I can set logger as the default logger ...
 
-	Trace("Engine", "Engine initialization complete"); // ... and log
+Trace("Engine", "Engine initialization complete"); // ... and log
  ```
 ### Advanced usage
  ```c++
-	auto consoleLogger = CreateWing<ConsoleWing>("main", Level::warning, PackageFormatter::CompletePattern); // "main" logger will Log in the console with a different pattern than the default
+auto consoleLogger = CreateWing<ConsoleWing>("main", Level::warning, PackageFormatter::CompletePattern); // "main" logger will Log in the console with a different pattern than the default
 
-	auto networklogger = CreateNet("network", {consoleLogger, CreateWing<FileWing>("", "log-advanced-usage.txt")}); // "network" logger will Log both in the console and in the file (through a newly created logger)
+auto networklogger = CreateNet("network", {consoleLogger, CreateWing<FileWing>("", "log-advanced-usage.txt")}); // "network" logger will Log both in the console and in the file (through a newly created logger)
 	
-	SetDefaultLogger(consoleLogger);
+SetDefaultLogger(consoleLogger);
 
-	// "main" logger is the default logger
-	Trace("Engine", "Engine initialization complete"); // this is a trace so it won't Log through main
+// "main" logger is the default logger
+Trace("Engine", "Engine initialization complete"); // this is a trace so it won't Log through main
 
-	// I can retrieve the "main" logger from anywhere
-	Get("main")->Error("Engine", "Engine initialization failed"); // this is an error so it will Log through main
+// I can retrieve the "main" logger from anywhere
+Get("main")->Error("Engine", "Engine initialization failed"); // this is an error so it will Log through main
 	
-	// I can retrieve the "network" logger from anywhere
-	Get("network")->Trace("Network", "Socket binded to port 80"); // this will print both it the file and in the console
-	Get("network")->Error("Network", "Network service unavailable"); // this will print both it the file and in the console
+// I can retrieve the "network" logger from anywhere
+Get("network")->Trace("Network", "Socket binded to port 80"); // this will print both it the file and in the console
+Get("network")->Error("Network", "Network service unavailable"); // this will print both it the file and in the console
  ```
 
 ### Thread safe usage
 ```c++
-	// This logger is not safe to concurrent accesses
-	auto unsafelogger = CreateWing<FileWing>("unsafe", "log-unsafe-thread-safe-usage.txt");
+// This logger is not safe to concurrent accesses
+auto unsafelogger = CreateWing<FileWing>("unsafe", "log-unsafe-thread-safe-usage.txt");
 
-	// This logger can be safely accessed by concurrent threads
-	auto safelogger = CreateSafeLogger("safe", 
-		CreateWing<FileWing>("", "log-safe-thread-safe-usage.txt")
-	);
+// This logger can be safely accessed by concurrent threads
+auto safelogger = CreateSafeLogger("safe", 
+	CreateWing<FileWing>("", "log-safe-thread-safe-usage.txt")
+);
 
-	std::thread foothread(foo);
-	std::thread barthread(bar);
+std::thread foothread(foo);
+std::thread barthread(bar);
 
-	// Here foo() and bar() are concurrent; but only the "safe" logger will safely write in "bin/log.txt"
+// Here foo() and bar() are concurrent; but only the "safe" logger will safely write in "bin/log.txt"
 
-	foothread.join();
-	barthread.join();
+foothread.join();
+barthread.join();
 ```
 
 ---   
