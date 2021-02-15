@@ -118,7 +118,7 @@ barthread.join();
 ---   
 # Butterfly x Nina Simone 
 
-Butterfly logging library was named after one of the greatest songs in history,
+Butterfly logging library was named after one of the greatest songs in the history of music,
 
 *Feelin' good*, interpretation by *Nina Simone*
 
