@@ -49,9 +49,29 @@ void Trace(std::string pTag, std::string pMessage, Source pSource)
 	Registry::Instance().GetDefaultLogger()->Trace(pTag, pMessage, pSource);
 }
 
+void Info(std::string pTag, std::string pMessage, Source pSource)
+{
+	Registry::Instance().GetDefaultLogger()->Info(pTag, pMessage, pSource);
+}
+
+void Warning(std::string pTag, std::string pMessage, Source pSource)
+{
+	Registry::Instance().GetDefaultLogger()->Warning(pTag, pMessage, pSource);
+}
+
 void Error(std::string pTag, std::string pMessage, Source pSource)
 {
 	Registry::Instance().GetDefaultLogger()->Error(pTag, pMessage, pSource);
+}
+
+void Fatal(std::string pTag, std::string pMessage, Source pSource)
+{
+	Registry::Instance().GetDefaultLogger()->Fatal(pTag, pMessage, pSource);
+}
+
+void Debug(std::string pTag, std::string pMessage, Source pSource)
+{
+	Registry::Instance().GetDefaultLogger()->Debug(pTag, pMessage, pSource);
 }
 
 }

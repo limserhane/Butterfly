@@ -13,7 +13,7 @@ static const char* Names[] = { "trace", "info", "warning", "error", "fatal", "de
 
 std::string ToString(Level::Value pLevel)
 {
-	if(Level::minimal <= pLevel && pLevel < Level::all)
+	if(Level::minimal <= pLevel && pLevel < Level::off)
 		return Level::Names[pLevel];
 	return "";
 }

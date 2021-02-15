@@ -20,7 +20,7 @@ int main() {
 
 	SetDefaultLogger(logger); // Or I can set logger as the default logger ...
 
-	Trace("Engine", "Engine initialization complete"); // ... and log
+	Info("Engine", "Engine initialization complete"); // ... and log
 
 	return 0;
 }
