@@ -116,7 +116,7 @@ Examples to find in the `example/` folder.
 ```
 
 ---   
-# Butterfly  
+# Butterfly x Nina Simone 
 
 Butterfly logging library was named after one of the greatest songs in history,
 
