@@ -10,7 +10,7 @@ using namespace std;
 
 int main() {
 
-	auto consoleLogger = CreateWing<ConsoleWing>("", Level::warning, "{pattern}"); // will only log records that have a warning or higher level
+	auto consoleLogger = CreateWing<ConsoleWing>("", Level::warning); // will only log records that have a warning or higher level
 
 	auto fileLogger = CreateWing<FileWing>("", "log-basic-usage.txt"); // will log all records (no level specified)
 

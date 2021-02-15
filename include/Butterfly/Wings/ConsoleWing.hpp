@@ -11,7 +11,7 @@ class ConsoleWing : public Wing
 {
 public :
 	
-	ConsoleWing(Level::Value pLevel = Level::minimal, PackageFormatter pFormatter = PackageFormatter());
+	ConsoleWing(Level::Value pLevel = Level::minimal, PackageFormatter pFormatter = PackageFormatter::SimplePattern);
 	ConsoleWing(PackageFormatter pFormatter);
 
 	// copy constructor ?

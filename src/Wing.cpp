@@ -24,8 +24,8 @@ void Wing::Log(Level::Value pLevel, std::string pTag, std::string pMessage, Sour
 	{
 		return ;
 	}
-	
-	Write(mFormatter.Format(Package(pSource, pLevel, pTag, pMessage)));
+
+	Write(mFormatter.Format(&mFormatter, Package(pSource, time(nullptr), pLevel, pTag, pMessage)));
 }
 
 } 

@@ -13,7 +13,7 @@ namespace Butterfly
 class Wing : public Logger
 {
 public :
-	Wing(Level::Value pLevel = Level::minimal, PackageFormatter pFormatter = PackageFormatter());
+	Wing(Level::Value pLevel = Level::minimal, PackageFormatter pFormatter = PackageFormatter::MinimalPattern);
 	Wing(PackageFormatter pFormatter);
 
 	virtual ~Wing();
