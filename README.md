@@ -56,6 +56,7 @@ Grab the `bin/libbutterfly.a` static library and the `include/butterfly/` includ
 
 * More `Wing`s
 	* Callback function
+	* Buffered wing
 
 ## Documentation
 
