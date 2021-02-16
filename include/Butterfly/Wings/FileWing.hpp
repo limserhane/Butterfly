@@ -16,10 +16,10 @@ namespace Butterfly
 class FileWing : public Wing
 {
 public :
-	FileWing(std::string pFilename, Level::Value pLevel = Level::minimal, PackageFormatter pFormatter = PackageFormatter::CompletePattern);
-	FileWing(std::string pFilename, PackageFormatter pFormatter);
+	FileWing(std::string pFilename, Level::Value pLevel = Level::minimal, const char* pPattern = PackageFormatter::CompletePattern);
+	FileWing(std::string pFilename, const char* pPattern);
 
-	~FileWing();
+	virtual ~FileWing();
 
 private :
 	/**

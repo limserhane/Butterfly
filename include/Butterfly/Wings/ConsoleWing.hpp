@@ -13,11 +13,14 @@ namespace Butterfly
 class ConsoleWing : public Wing
 {
 public :
+
+	ConsoleWing(Level::Value pLevel = Level::minimal, const char* pPattern = PackageFormatter::SimplePattern);
+	ConsoleWing(const char* pPattern);
 	
-	ConsoleWing(Level::Value pLevel = Level::minimal, PackageFormatter pFormatter = PackageFormatter::SimplePattern);
-	ConsoleWing(PackageFormatter pFormatter);
-	
-	~ConsoleWing();
+	virtual ~ConsoleWing();
+
+protected :
+	ConsoleWing(Level::Value pLevel, std::unique_ptr<PackageFormatter> pFormatter);
 
 private :
 	/**

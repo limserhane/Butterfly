@@ -19,7 +19,10 @@ PackageFormatter::PackageFormatter(const PackageFormatter& pOther):
 	mTimeFormat(pOther.mTimeFormat)
 {}
 
-std::string PackageFormatter::Format(PackageFormatter* pFormatter, Package pPackage)
+PackageFormatter::~PackageFormatter()
+{}
+
+std::string PackageFormatter::Format(Package pPackage) const
 {
 	constexpr size_t lBufferSize = 256;
 	char lBuffer[lBufferSize];
@@ -27,12 +30,12 @@ std::string PackageFormatter::Format(PackageFormatter* pFormatter, Package pPack
 	snprintf(
 		lBuffer, lBufferSize,
 
-		pFormatter->mFormat.c_str(), 
+		mFormat.c_str(), 
 
-		pFormatter->FormatTime(pPackage.Time).c_str(),
-		pFormatter->FormatLevel(pPackage.Level).c_str(),
-		pFormatter->FormatTag(pPackage.Tag).c_str(),
-		pFormatter->FormatMessage(pPackage.Message).c_str()
+		FormatTime(pPackage.Time).c_str(),
+		FormatLevel(pPackage.Level).c_str(),
+		pPackage.Tag.c_str(),
+		pPackage.Message.c_str()
 	);
 
 	return lBuffer;
@@ -97,4 +100,5 @@ std::string PackageFormatter::FormatTime(time_t pRawTime) const
 	
 	return lBuffer;
 }
+
 } 

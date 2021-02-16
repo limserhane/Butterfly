@@ -18,13 +18,15 @@ public :
 
 	PackageFormatter(const PackageFormatter& pOther);
 
+	virtual ~PackageFormatter();
+
 	/**
 	 * @brief Format a log record into a string.
 	 * @param pFormatter A formatter providing the needed format for the log record and for the log informations;
 	 * @param pPackage A package providing informations about the log record;
 	 * @return The string representation of the log record
 	 */
-	static std::string Format(PackageFormatter* pFormatter, Package pPackage);
+	virtual std::string Format(Package pPackage) const;
 
 protected :
 	/**
@@ -48,26 +50,6 @@ protected :
 	inline virtual std::string FormatLevel(Level::Value pLevel) const
 	{
 		return ToString(pLevel);
-	}
-
-	/**
-	 * @brief Formats the flag in a certain way.
-	 * @param pTag The tag to be formatted;
-	 * @return The tag itself
-	 */
-	inline virtual std::string FormatTag(std::string pTag) const
-	{
-		return pTag;
-	}
-
-	/**
-	 * @brief Formats the flag in a certain way.
-	 * @param pMessage The message to be formatted;
-	 * @return The message itself
-	 */
-	inline virtual std::string FormatMessage(std::string pMessage) const
-	{
-		return pMessage;
 	}
 
 	std::string mFormat;

@@ -16,8 +16,8 @@ namespace Butterfly
 class Wing : public Logger
 {
 public :
-	Wing(Level::Value pLevel = Level::minimal, PackageFormatter pFormatter = PackageFormatter::MinimalPattern);
-	Wing(PackageFormatter pFormatter);
+	Wing(Level::Value pLevel = Level::minimal, std::unique_ptr<PackageFormatter> pFormatter = std::make_unique<PackageFormatter>(PackageFormatter::MinimalPattern));
+	Wing(std::unique_ptr<PackageFormatter> pFormatter);
 
 	virtual ~Wing();
 
@@ -38,7 +38,7 @@ protected :
 	virtual void Write(std::string pRecord) = 0;
 
 	Level::Value mLevel;
-	PackageFormatter mFormatter;
+	std::unique_ptr<PackageFormatter> mFormatter;
 
 }; 
 
