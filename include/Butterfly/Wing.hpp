@@ -28,7 +28,7 @@ public :
 	 * @param pMessage The message of the record to log;
 	 * @param pSource The source of the call to the log function;
 	 */
-	inline virtual void Log(Level::Value pLevel, std::string pTag, std::string pMessage) override
+	inline virtual void Log(Level::Value pLevel, std::string_view pTag, std::string_view pMessage) override
 	{
 		if(pLevel < mLevel)
 		{

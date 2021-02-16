@@ -26,7 +26,7 @@ private :
 	 * @brief Writes a log into its file.
 	 * @param pRecord The record to be logged;
 	 */
-	inline virtual void Write(std::string pRecord) override
+	inline virtual void Write(const std::string pRecord) override
 	{
 		mFile << pRecord;
 	}

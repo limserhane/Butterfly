@@ -14,7 +14,7 @@ namespace Butterfly
  */
 struct Package
 {
-	Package(time_t pTime, Level::Value pLevel, std::string pTag, std::string pMessage);
+	Package(time_t pTime, Level::Value pLevel, std::string_view pTag, std::string_view pMessage);
 
 	time_t Time;
 	Level::Value Level;

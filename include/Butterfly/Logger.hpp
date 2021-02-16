@@ -3,6 +3,7 @@
 #include <Butterfly/Common.hpp>
 
 #include <string>
+#include <string_view>
 
 namespace Butterfly
 {
@@ -24,7 +25,7 @@ public :
 	 * @param pMessage The message of the record to log;
 	 * @param pSource The source of the call to the log function;
 	 */
-	virtual void Log(Level::Value pLevel, std::string pTag, std::string pMessage) = 0;
+	virtual void Log(Level::Value pLevel, std::string_view pTag, std::string_view pMessage) = 0;
 
 	/**
 	 * @brief Logs a trace using this logger.
@@ -32,7 +33,7 @@ public :
 	 * @param pMessage The message of the record to log;
 	 * @param pSource The source of the call to the log function;
 	 */
-	inline virtual void Trace(std::string pTag, std::string pMessage) final
+	inline virtual void Trace(std::string_view pTag, std::string_view pMessage) final
 	{
 		Log(Level::trace, pTag, pMessage);
 	}
@@ -43,7 +44,7 @@ public :
 	 * @param pMessage The message of the record to log;
 	 * @param pSource The source of the call to the log function;
 	 */
-	inline virtual void Info(std::string pTag, std::string pMessage) final
+	inline virtual void Info(std::string_view pTag, std::string_view pMessage) final
 	{
 		Log(Level::info, pTag, pMessage);
 	}
@@ -54,7 +55,7 @@ public :
 	 * @param pMessage The message of the record to log;
 	 * @param pSource The source of the call to the log function;
 	 */
-	inline virtual void Warning(std::string pTag, std::string pMessage) final
+	inline virtual void Warning(std::string_view pTag, std::string_view pMessage) final
 	{
 		Log(Level::warning, pTag, pMessage);
 	}
@@ -65,7 +66,7 @@ public :
 	 * @param pMessage The message of the record to log;
 	 * @param pSource The source of the call to the log function;
 	 */
-	inline virtual void Error(std::string pTag, std::string pMessage) final
+	inline virtual void Error(std::string_view pTag, std::string_view pMessage) final
 	{
 		Log(Level::error, pTag, pMessage);
 	}
@@ -76,7 +77,7 @@ public :
 	 * @param pMessage The message of the record to log;
 	 * @param pSource The source of the call to the log function;
 	 */
-	inline virtual void Fatal(std::string pTag, std::string pMessage) final
+	inline virtual void Fatal(std::string_view pTag, std::string_view pMessage) final
 	{
 		Log(Level::fatal, pTag, pMessage);
 	}
@@ -87,7 +88,7 @@ public :
 	 * @param pMessage The message of the record to log;
 	 * @param pSource The source of the call to the log function;
 	 */
-	inline virtual void Debug(std::string pTag, std::string pMessage) final
+	inline virtual void Debug(std::string_view pTag, std::string_view pMessage) final
 	{
 		Log(Level::debug, pTag, pMessage);
 	}

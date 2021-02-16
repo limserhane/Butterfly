@@ -31,7 +31,7 @@ void Net::Add(std::shared_ptr<Logger> pLogger)
 
 void Net::Add(std::initializer_list<std::shared_ptr<Logger>> pLoggers)
 {
-	for (auto lLogger : pLoggers)
+	for (auto& lLogger : pLoggers)
 	{
 		Add(lLogger);
 	}

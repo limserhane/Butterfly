@@ -22,7 +22,7 @@ EXAMPLES := $(addprefix $(BINEXAMPLEDIR), $(notdir $(EXAMPLESOURCES:.cpp=.out)))
 
 # Compiler
 CC = g++ -std=c++17
-CCFLAGS = -Wall -Wextra -pedantic
+CCFLAGS = -Wall -Wextra -pedantic -g
 AR = ar rcs
 
 # Commands
@@ -43,7 +43,8 @@ directories :
 clean : 
 	@ echo "Cleaning up project builds"
 	@ $(RM) $(BUILDDIR)/* $(BINDIR)/*
-	@ $(RM) log-*.txt
+	@ $(RM) log-*.txt callgrind.out.*
+
 
 examples : $(LIBPATH) $(EXAMPLES)
 

@@ -78,7 +78,7 @@ inline std::shared_ptr<Logger> Get(std::string pIdentifier)
  * @param pMessage The message of the record to log;
  * @param pSource The source of the call to the log function;
  */
-inline void Trace(std::string pTag, std::string pMessage)
+inline void Trace(std::string_view pTag, std::string_view pMessage)
 {
 	Registry::Instance().GetDefaultLogger()->Trace(pTag, pMessage);
 }
@@ -89,7 +89,7 @@ inline void Trace(std::string pTag, std::string pMessage)
  * @param pMessage The message of the record to log;
  * @param pSource The source of the call to the log function;
  */
-inline void Info(std::string pTag, std::string pMessage)
+inline void Info(std::string_view pTag, std::string_view pMessage)
 {
 	Registry::Instance().GetDefaultLogger()->Info(pTag, pMessage);
 }
@@ -100,7 +100,7 @@ inline void Info(std::string pTag, std::string pMessage)
  * @param pMessage The message of the record to log;
  * @param pSource The source of the call to the log function;
  */
-inline void Warning(std::string pTag, std::string pMessage)
+inline void Warning(std::string_view pTag, std::string_view pMessage)
 {
 	Registry::Instance().GetDefaultLogger()->Warning(pTag, pMessage);
 }
@@ -111,7 +111,7 @@ inline void Warning(std::string pTag, std::string pMessage)
  * @param pMessage The message of the record to log;
  * @param pSource The source of the call to the log function;
  */
-inline void Error(std::string pTag, std::string pMessage)
+inline void Error(std::string_view pTag, std::string_view pMessage)
 {
 	Registry::Instance().GetDefaultLogger()->Error(pTag, pMessage);
 }
@@ -122,7 +122,7 @@ inline void Error(std::string pTag, std::string pMessage)
  * @param pMessage The message of the record to log;
  * @param pSource The source of the call to the log function;
  */
-inline void Fatal(std::string pTag, std::string pMessage)
+inline void Fatal(std::string_view pTag, std::string_view pMessage)
 {
 	Registry::Instance().GetDefaultLogger()->Fatal(pTag, pMessage);
 }
@@ -133,7 +133,7 @@ inline void Fatal(std::string pTag, std::string pMessage)
  * @param pMessage The message of the record to log;
  * @param pSource The source of the call to the log function;
  */
-inline void Debug(std::string pTag, std::string pMessage)
+inline void Debug(std::string_view pTag, std::string_view pMessage)
 {
 	Registry::Instance().GetDefaultLogger()->Debug(pTag, pMessage);
 }

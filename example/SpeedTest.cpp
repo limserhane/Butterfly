@@ -12,28 +12,28 @@ using namespace std;
 
 int main() {
 
-	// SetDefaultLogger(CreateWing<ConsoleWing>("")); // 200k/s
+	SetDefaultLogger(CreateWing<ConsoleWing>("")); // 75k/s
 
 	// SetDefaultLogger(CreateWing<ColoredConsoleWing>("")); // 10k/s
 
-	SetDefaultLogger(CreateWing<FileWing>("", "log-speed-test.txt")); // 210k/s
+	// SetDefaultLogger(CreateWing<FileWing>("", "log-speed-test.txt")); // 230k/s
 
     using std::chrono::duration;
     using std::chrono::duration_cast;
     using std::chrono::high_resolution_clock;
 
-	size_t howmany = 100000;
+	size_t howmany = 10;
 
     auto start = high_resolution_clock::now();
 	
     for (size_t i = 0; i < howmany; ++i)
     {
-		Trace("ColoredConsoleWing", "this is a trace");
-		Info("ColoredConsoleWing", "this is an info");
-		Warning("ColoredConsoleWing", "this is a warning");
-		Error("ColoredConsoleWing", "this is an error");
-		Fatal("ColoredConsoleWing", "this is a fatal error");
-		Debug("ColoredConsoleWing", "this is a debug info");
+		Trace("speed", "this is a trace");
+		Info("speed", "this is an info");
+		Warning("speed", "this is a warning");
+		Error("speed", "this is an error");
+		Fatal("speed", "this is a fatal error");
+		Debug("speed", "this is a debug info");
     }
 
     auto delta = high_resolution_clock::now() - start;
