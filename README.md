@@ -36,7 +36,11 @@ Grab the `bin/libbutterfly.a` static library and the `include/butterfly/` includ
 	* Location in source code (file, line, function)
 
 * Multiple ways to write log records through `Wing`s
-	* Easy to implement custom `Wing`s
+	* Console
+	* Colored console
+	* File
+
+* Easy to implement custom `Wing`s
 
 * Can log one record through multiple `Wing`s with a `Net`
 * Level filter on `Wing`s
@@ -53,7 +57,6 @@ Grab the `bin/libbutterfly.a` static library and the `include/butterfly/` includ
 
 * More `Wing`s
 	* Callback function
-	* Colored console
 
 ## Documentation
 
