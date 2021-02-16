@@ -33,7 +33,6 @@ Grab the `bin/libbutterfly.a` static library and the `include/butterfly/` includ
 	* Time (also with custom representation)
 	* Level
 	* Tag
-	* Location in source code (file, line, function)
 
 * Multiple ways to write log records through `Wing`s
 	* Console
