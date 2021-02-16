@@ -18,14 +18,14 @@ Wing::Wing(PackageFormatter pFormatter):
 Wing::~Wing()
 {}
 
-void Wing::Log(Level::Value pLevel, std::string pTag, std::string pMessage, Source pSource)
+void Wing::Log(Level::Value pLevel, std::string pTag, std::string pMessage)
 {
 	if(pLevel < mLevel)
 	{
 		return ;
 	}
 
-	Write(mFormatter.Format(&mFormatter, Package(pSource, time(nullptr), pLevel, pTag, pMessage)));
+	Write(mFormatter.Format(&mFormatter, Package(time(nullptr), pLevel, pTag, pMessage)));
 }
 
 } 

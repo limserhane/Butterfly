@@ -10,29 +10,29 @@ Logger::Logger()
 Logger::~Logger()
 {}
 
-void Logger::Trace(std::string pTag, std::string pMessage, Source pSource)
+void Logger::Trace(std::string pTag, std::string pMessage)
 {
-	Log(Level::trace, pTag, pMessage, pSource);
+	Log(Level::trace, pTag, pMessage);
 }
-void Logger::Info(std::string pTag, std::string pMessage, Source pSource)
+void Logger::Info(std::string pTag, std::string pMessage)
 {
-	Log(Level::info, pTag, pMessage, pSource);
+	Log(Level::info, pTag, pMessage);
 }
-void Logger::Warning(std::string pTag, std::string pMessage, Source pSource)
+void Logger::Warning(std::string pTag, std::string pMessage)
 {
-	Log(Level::warning, pTag, pMessage, pSource);
+	Log(Level::warning, pTag, pMessage);
 }
-void Logger::Error(std::string pTag, std::string pMessage, Source pSource)
+void Logger::Error(std::string pTag, std::string pMessage)
 {
-	Log(Level::error, pTag, pMessage, pSource);
+	Log(Level::error, pTag, pMessage);
 }
-void Logger::Fatal(std::string pTag, std::string pMessage, Source pSource)
+void Logger::Fatal(std::string pTag, std::string pMessage)
 {
-	Log(Level::fatal, pTag, pMessage, pSource);
+	Log(Level::fatal, pTag, pMessage);
 }
-void Logger::Debug(std::string pTag, std::string pMessage, Source pSource)
+void Logger::Debug(std::string pTag, std::string pMessage)
 {
-	Log(Level::debug, pTag, pMessage, pSource);
+	Log(Level::debug, pTag, pMessage);
 }
 
 } 

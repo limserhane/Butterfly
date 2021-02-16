@@ -18,11 +18,11 @@ Net::Net(std::initializer_list<std::shared_ptr<Logger>> pLoggers):
 Net::~Net()
 {}
 
-void Net::Log(Level::Value pLevel, std::string pTag, std::string pMessage, Source pSource)
+void Net::Log(Level::Value pLevel, std::string pTag, std::string pMessage)
 {
 	for (std::shared_ptr<Logger> logger : mLoggers)
 	{
-		logger->Log(pLevel, pTag, pMessage, pSource);
+		logger->Log(pLevel, pTag, pMessage);
 	}
 }
 

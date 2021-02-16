@@ -27,7 +27,7 @@ public :
 	 * @param pMessage The message of the record to log;
 	 * @param pSource The source of the call to the log function;
 	 */
-	virtual void Log(Level::Value pLevel, std::string pTag, std::string pMessage, Source pSource = Source()) override;
+	virtual void Log(Level::Value pLevel, std::string pTag, std::string pMessage) override;
 
 	/**
 	 * @brief Adds a logger as its child.

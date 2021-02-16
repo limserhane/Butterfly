@@ -44,34 +44,34 @@ std::shared_ptr<Logger> Get(std::string pIdentifier)
 	return Registry::Instance().Get(pIdentifier);
 }
 
-void Trace(std::string pTag, std::string pMessage, Source pSource)
+void Trace(std::string pTag, std::string pMessage)
 {
-	Registry::Instance().GetDefaultLogger()->Trace(pTag, pMessage, pSource);
+	Registry::Instance().GetDefaultLogger()->Trace(pTag, pMessage);
 }
 
-void Info(std::string pTag, std::string pMessage, Source pSource)
+void Info(std::string pTag, std::string pMessage)
 {
-	Registry::Instance().GetDefaultLogger()->Info(pTag, pMessage, pSource);
+	Registry::Instance().GetDefaultLogger()->Info(pTag, pMessage);
 }
 
-void Warning(std::string pTag, std::string pMessage, Source pSource)
+void Warning(std::string pTag, std::string pMessage)
 {
-	Registry::Instance().GetDefaultLogger()->Warning(pTag, pMessage, pSource);
+	Registry::Instance().GetDefaultLogger()->Warning(pTag, pMessage);
 }
 
-void Error(std::string pTag, std::string pMessage, Source pSource)
+void Error(std::string pTag, std::string pMessage)
 {
-	Registry::Instance().GetDefaultLogger()->Error(pTag, pMessage, pSource);
+	Registry::Instance().GetDefaultLogger()->Error(pTag, pMessage);
 }
 
-void Fatal(std::string pTag, std::string pMessage, Source pSource)
+void Fatal(std::string pTag, std::string pMessage)
 {
-	Registry::Instance().GetDefaultLogger()->Fatal(pTag, pMessage, pSource);
+	Registry::Instance().GetDefaultLogger()->Fatal(pTag, pMessage);
 }
 
-void Debug(std::string pTag, std::string pMessage, Source pSource)
+void Debug(std::string pTag, std::string pMessage)
 {
-	Registry::Instance().GetDefaultLogger()->Debug(pTag, pMessage, pSource);
+	Registry::Instance().GetDefaultLogger()->Debug(pTag, pMessage);
 }
 
 }

@@ -34,46 +34,6 @@ protected :
 	void Compile(std::string pPattern);
 
 	/**
-	 * @brief Formats the flag in a certain way.
-	 * @param pFile The filename to be formatted;
-	 * @return The filename itself
-	 */
-	inline virtual std::string FormatSourceFile(std::string pFile) const
-	{
-		return pFile;
-	}
-
-	/**
-	 * @brief Formats the flag in a certain way.
-	 * @param pLine The line number to be formatted;
-	 * @return The string representation of the line number
-	 */
-	inline virtual std::string FormatSourceLine(int pLine) const
-	{
-		return std::to_string(pLine);
-	}
-
-	/**
-	 * @brief Formats the flag in a certain way.
-	 * @param pFunction The function name to be formatted;
-	 * @return The function name itself
-	 */
-	inline virtual std::string FormatSourceFunction(std::string pFunction) const
-	{
-		return pFunction;
-	}
-
-	/**
-	 * @brief Formats the flag in a certain way.
-	 * @param pPrettyFunction The function signature to be formatted;
-	 * @return The function signature itself
-	 */
-	inline virtual std::string FormatSourcePrettyFunction(std::string pPrettyFunction) const
-	{
-		return pPrettyFunction;
-	}
-
-	/**
 	 * @brief Formats the flag in a certain way using the format using the format given in the pattern.
 	 * @param pRawTime The time to be formatted;
 	 * @return The string representation of the time
@@ -122,9 +82,6 @@ public :
 
 	/// A complete pattern representing the main informations about the log record : "2021-02-15 14:25:31 [error] [network] Network service unavailable"
 	static constexpr const char* CompletePattern = "{time:%F %T} [{level:}] [{tag:}] {message:}\n";
-
-	/// A pattern representing minimal informations about the log record for debugging : "[int StartServer(const char* pIpAdress, int pPort)] [error] [network] Network service unavailable"
-	static constexpr const char* DebugPattern = "[{pfunc:}] [{level:}] [{tag:}] {message:}\n";
 
 }; 
 

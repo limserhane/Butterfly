@@ -29,10 +29,6 @@ std::string PackageFormatter::Format(PackageFormatter* pFormatter, Package pPack
 
 		pFormatter->mFormat.c_str(), 
 
-		pFormatter->FormatSourceFile(pPackage.Location.File).c_str(),
-		pFormatter->FormatSourceLine(pPackage.Location.Line).c_str(),
-		pFormatter->FormatSourceFunction(pPackage.Location.Function).c_str(),
-		pFormatter->FormatSourcePrettyFunction(pPackage.Location.PrettyFunction).c_str(),
 		pFormatter->FormatTime(pPackage.Time).c_str(),
 		pFormatter->FormatLevel(pPackage.Level).c_str(),
 		pFormatter->FormatTag(pPackage.Tag).c_str(),
@@ -66,36 +62,20 @@ void PackageFormatter::Compile(std::string pPattern)
 		std::string lReplacement;
 		if(lFlagIdentifier == "message")
 		{
-			lReplacement = "%8$$s";
-		}
-		else if(lFlagIdentifier == "file")
-		{
-			lReplacement = "%1$$s";
-		}
-		else if(lFlagIdentifier == "line")
-		{
-			lReplacement = "%2$$s";
-		}
-		else if(lFlagIdentifier == "func")
-		{
-			lReplacement = "%3$$s";
-		}
-		else if(lFlagIdentifier == "pfunc")
-		{
 			lReplacement = "%4$$s";
 		}
 		else if(lFlagIdentifier == "time")
 		{
-			lReplacement = "%5$$s";
+			lReplacement = "%1$$s";
 			mTimeFormat = lMatch[2].str();
 		}
 		else if(lFlagIdentifier == "level")
 		{
-			lReplacement = "%6$$s";
+			lReplacement = "%2$$s";
 		}
 		else if(lFlagIdentifier == "tag")
 		{
-			lReplacement = "%7$$s";
+			lReplacement = "%3$$s";
 		}
 		else
 		{
