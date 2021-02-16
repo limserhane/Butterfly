@@ -48,20 +48,29 @@ std::shared_ptr<SafeLogger> CreateSafeLogger(std::string pIdentifier, std::share
  * @brief Gets the actual default logger.
  * @return The default logger
  */
-std::shared_ptr<Logger> GetDefaultLogger();
+inline std::shared_ptr<Logger> GetDefaultLogger()
+{
+	return Registry::Instance().GetDefaultLogger();
+}
 
 /**
  * @brief Sets the default logger.
  * @param pLogger The logger to be set as the default logger;
  */
-void SetDefaultLogger(std::shared_ptr<Logger> pLogger);
+inline void SetDefaultLogger(std::shared_ptr<Logger> pLogger)
+{
+	return Registry::Instance().SetDefaultLogger(pLogger);
+}
 
 /**
  * @brief Gets the logger from the global registry.
  * @param pIdentifier The identifier of the requested logger;
  * @return The logger identified by \p pIdentifier
  */
-std::shared_ptr<Logger> Get(std::string pIdentifier);
+inline std::shared_ptr<Logger> Get(std::string pIdentifier)
+{
+	return Registry::Instance().Get(pIdentifier);
+}
 
 /**
  * @brief Logs a trace using the actual default logger
@@ -69,7 +78,10 @@ std::shared_ptr<Logger> Get(std::string pIdentifier);
  * @param pMessage The message of the record to log;
  * @param pSource The source of the call to the log function;
  */
-void Trace(std::string pTag, std::string pMessage);
+inline void Trace(std::string pTag, std::string pMessage)
+{
+	Registry::Instance().GetDefaultLogger()->Trace(pTag, pMessage);
+}
 
 /**
  * @brief Logs an information using the actual default logger
@@ -77,7 +89,10 @@ void Trace(std::string pTag, std::string pMessage);
  * @param pMessage The message of the record to log;
  * @param pSource The source of the call to the log function;
  */
-void Info(std::string pTag, std::string pMessage);
+inline void Info(std::string pTag, std::string pMessage)
+{
+	Registry::Instance().GetDefaultLogger()->Info(pTag, pMessage);
+}
 
 /**
  * @brief Logs a warning using the actual default logger
@@ -85,7 +100,10 @@ void Info(std::string pTag, std::string pMessage);
  * @param pMessage The message of the record to log;
  * @param pSource The source of the call to the log function;
  */
-void Warning(std::string pTag, std::string pMessage);
+inline void Warning(std::string pTag, std::string pMessage)
+{
+	Registry::Instance().GetDefaultLogger()->Warning(pTag, pMessage);
+}
 
 /**
  * @brief Logs an error using the actual default logger
@@ -93,7 +111,10 @@ void Warning(std::string pTag, std::string pMessage);
  * @param pMessage The message of the record to log;
  * @param pSource The source of the call to the log function;
  */
-void Error(std::string pTag, std::string pMessage);
+inline void Error(std::string pTag, std::string pMessage)
+{
+	Registry::Instance().GetDefaultLogger()->Error(pTag, pMessage);
+}
 
 /**
  * @brief Logs a fatal error using the actual default logger
@@ -101,7 +122,10 @@ void Error(std::string pTag, std::string pMessage);
  * @param pMessage The message of the record to log;
  * @param pSource The source of the call to the log function;
  */
-void Fatal(std::string pTag, std::string pMessage);
+inline void Fatal(std::string pTag, std::string pMessage)
+{
+	Registry::Instance().GetDefaultLogger()->Fatal(pTag, pMessage);
+}
 
 /**
  * @brief Logs a debug information using the actual default logger
@@ -109,6 +133,9 @@ void Fatal(std::string pTag, std::string pMessage);
  * @param pMessage The message of the record to log;
  * @param pSource The source of the call to the log function;
  */
-void Debug(std::string pTag, std::string pMessage);
+inline void Debug(std::string pTag, std::string pMessage)
+{
+	Registry::Instance().GetDefaultLogger()->Debug(pTag, pMessage);
+}
 	
 } 

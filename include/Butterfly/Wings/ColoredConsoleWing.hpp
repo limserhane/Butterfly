@@ -8,7 +8,7 @@ namespace Butterfly
 {
 
 /**
- * @brief A concrete Wing used to log colored records into the standard output, depending on the level.
+ * @brief A concrete Wing used to log colored records into the standard output, depending on the level. This Wing gives poor performance due to the treatment the console needs to process for the colors.
  */
 class ColoredConsoleWing : public ConsoleWing
 {

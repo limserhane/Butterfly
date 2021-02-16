@@ -2,7 +2,6 @@
 #include <Butterfly/Butterfly.hpp>
 #include <Butterfly/Wings/FileWing.hpp>
 #include <Butterfly/Wings/ConsoleWing.hpp>
-#include <Butterfly/Details/PackageFormatters/ColoredPackageFormatter.hpp>
 
 #include <iostream>
 

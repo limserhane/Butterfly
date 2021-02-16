@@ -4,20 +4,6 @@
 namespace Butterfly
 {
 
-namespace Level
-{
-
-static const char* Names[] = { "trace", "info", "warning", "error", "fatal", "debug" };
-
-}
-
-std::string ToString(Level::Value pLevel)
-{
-	if(Level::minimal <= pLevel && pLevel < Level::off)
-		return Level::Names[pLevel];
-	return "";
-}
-
 Source::Source():
 	File(),
 	Line(),

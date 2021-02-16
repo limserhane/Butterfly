@@ -23,9 +23,4 @@ FileWing::~FileWing()
 	mFile.close();
 }
 
-void FileWing::Write(std::string pRecord)
-{
-	mFile << pRecord;
-}
-
 }

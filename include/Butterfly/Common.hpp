@@ -32,13 +32,20 @@ enum Value
 	off			 // The level used to specify that a logger must log everything;
 };
 
+static constexpr const char* Names[] = { "trace", "info", "warning", "error", "fatal", "debug" };
+
 }
 /**
  * @brief Converts a Level value into its string representation.
  * @param pLevel The level value to be converted;
  * @return The string representation of \p pLevel
  */
-std::string ToString(Level::Value pLevel);
+inline std::string ToString(Level::Value pLevel)
+{
+	if(Level::minimal <= pLevel && pLevel < Level::off)
+		return Level::Names[pLevel];
+	return "";
+}
 
 /**
  * @brief A structure containing informations about a location in the source code.

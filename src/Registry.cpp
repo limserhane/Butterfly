@@ -16,11 +16,6 @@ Registry::Registry():
 Registry::~Registry()
 {}
 
-std::shared_ptr<Logger> Registry::GetDefaultLogger() const
-{
-	return mDefaultLogger;
-}
-
 void Registry::SetDefaultLogger(std::shared_ptr<Logger> pLogger)
 {
 	if(!pLogger)
@@ -73,12 +68,6 @@ void Registry::Remove(std::string pIdentifier)
 std::shared_ptr<Logger> Registry::Get(std::string pIdentifier) const
 {
 	return mLoggers.at(pIdentifier); // throws out_of_range
-}
-
-Registry& Registry::Instance()
-{
-	static Registry registry;
-	return registry;
 }
 
 }

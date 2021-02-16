@@ -29,49 +29,4 @@ std::shared_ptr<SafeLogger> CreateSafeLogger(std::string pIdentifier, std::share
 	return lSafeLogger;
 }
 
-std::shared_ptr<Logger> GetDefaultLogger()
-{
-	return Registry::Instance().GetDefaultLogger();
-}
-
-void SetDefaultLogger(std::shared_ptr<Logger> pLogger)
-{
-	return Registry::Instance().SetDefaultLogger(pLogger);
-}
-
-std::shared_ptr<Logger> Get(std::string pIdentifier)
-{
-	return Registry::Instance().Get(pIdentifier);
-}
-
-void Trace(std::string pTag, std::string pMessage)
-{
-	Registry::Instance().GetDefaultLogger()->Trace(pTag, pMessage);
-}
-
-void Info(std::string pTag, std::string pMessage)
-{
-	Registry::Instance().GetDefaultLogger()->Info(pTag, pMessage);
-}
-
-void Warning(std::string pTag, std::string pMessage)
-{
-	Registry::Instance().GetDefaultLogger()->Warning(pTag, pMessage);
-}
-
-void Error(std::string pTag, std::string pMessage)
-{
-	Registry::Instance().GetDefaultLogger()->Error(pTag, pMessage);
-}
-
-void Fatal(std::string pTag, std::string pMessage)
-{
-	Registry::Instance().GetDefaultLogger()->Fatal(pTag, pMessage);
-}
-
-void Debug(std::string pTag, std::string pMessage)
-{
-	Registry::Instance().GetDefaultLogger()->Debug(pTag, pMessage);
-}
-
 }

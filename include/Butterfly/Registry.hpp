@@ -24,7 +24,10 @@ public :
 	 * @brief Getter for the actual default logger.
 	 * @return The actual default logger
 	 */
-	std::shared_ptr<Logger> GetDefaultLogger() const;
+	inline std::shared_ptr<Logger> GetDefaultLogger() const
+	{
+		return mDefaultLogger;
+	}
 
 	/**
 	 * @brief Sets the default logger.
@@ -56,7 +59,11 @@ public :
 	 * @brief Getter for the global registry.
 	 * @return The global registry
 	 */
-	static Registry& Instance();
+	inline static Registry& Instance()
+	{
+		static Registry registry;
+		return registry;
+	}
 
 private :
 	Registry();

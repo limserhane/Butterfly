@@ -20,9 +20,4 @@ ConsoleWing::ConsoleWing(const char* pPattern):
 ConsoleWing::~ConsoleWing()
 {}
 
-void ConsoleWing::Write(std::string pRecord)
-{
-	std::cout << pRecord;
-}
-
 }

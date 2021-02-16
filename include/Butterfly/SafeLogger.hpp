@@ -25,7 +25,12 @@ public :
 	 * @param pMessage The message of the record to log;
 	 * @param pSource The source of the call to the log function;
 	 */
-	virtual void Log(Level::Value pLevel, std::string pTag, std::string pMessage) override;
+	inline virtual void Log(Level::Value pLevel, std::string pTag, std::string pMessage) override
+	{
+		std::unique_lock<std::mutex> lLock(mMutex);
+
+		mLogger->Log(pLevel, pTag, pMessage);	
+	}
 
 private :
 	std::shared_ptr<Logger> mLogger;
