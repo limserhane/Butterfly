@@ -1,58 +1,58 @@
-#include <Butterfly/Common.hpp>
+#include <butterfly/common.hpp>
 
 
-namespace Butterfly
+namespace butterfly
 {
 
-Source::Source():
-	File(),
-	Line(),
-	Function(),
-	PrettyFunction()
+source::source():
+	file(),
+	line(),
+	function(),
+	pretty_function()
 {}
 
-Source::Source(std::string pFile, int pLine, std::string pFunction, std::string pPrettyFunction):
-	File(pFile),
-	Line(pLine),
-	Function(pFunction),
-	PrettyFunction(pPrettyFunction)
+source::source(std::string p_file, int p_line, std::string p_function, std::string p_pretty_function):
+	file(p_file),
+	line(p_line),
+	function(p_function),
+	pretty_function(p_pretty_function)
 {} 
 
-Source::Source(const Source& other):
-	Source(other.File, other.Line, other.Function, other.PrettyFunction)
+source::source(const source& p_other):
+	source(p_other.file, p_other.line, p_other.function, p_other.pretty_function)
 {} 
 
-Exception::Exception(Source pSource, std::string pDetails)
+exception::exception(source p_source, std::string p_details)
 {
-	mDescription = Format(pSource, pDetails);
+	m_description = format(p_source, p_details);
 } 
 
-const char* Exception::what() const throw()
+const char* exception::what() const throw()
 {
-	return mDescription.c_str();
+	return m_description.c_str();
 } 
 
-std::string Exception::Format(Source pSource, std::string pDetails)
+std::string exception::format(source p_source, std::string p_details)
 {
 	constexpr size_t bufferSize = 256;
 	char buffer[bufferSize];
 	snprintf(
 		buffer, bufferSize,
-		"Butterfly : (%s) : %s",
-		pSource.PrettyFunction.c_str(),
-		pDetails.c_str()
+		"butterfly : (%s) : %s",
+		p_source.pretty_function.c_str(),
+		p_details.c_str()
 	);
 	return buffer;
 } 
 
-void ThrowException(Source pSource, std::string pDetails)
+void throw_exception(source p_source, std::string p_details)
 {
-	throw Exception(pSource, pDetails);
+	throw exception(p_source, p_details);
 }
 
-void PrintException(Source pSource, std::string pDetails)
+void print_exception(source p_source, std::string p_details)
 {
-	std::cerr << Exception(pSource, pDetails).what() << std::endl;
+	std::cerr << exception(p_source, p_details).what() << std::endl;
 } 
 
 } 

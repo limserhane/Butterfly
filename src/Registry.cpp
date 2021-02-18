@@ -1,73 +1,73 @@
-#include <Butterfly/Registry.hpp>
+#include <butterfly/registry.hpp>
 
-#include <Butterfly/Wings/ConsoleWing.hpp>
+#include <butterfly/wings/console_wing.hpp>
 
 #include <utility>
 
-namespace Butterfly
+namespace butterfly
 {
 
-Registry::Registry():
-	mDefaultLogger(std::make_shared<ConsoleWing>("[{tag:}] {message:}\n"))
+registry::registry():
+	m_default_logger(std::make_shared<console_wing>(pattern::minimal))
 {
-	GetDefaultLogger()->Trace("Butterfly", "Butterflies all havin' fun !");
+	get_default_logger()->trace("butterfly", "Butterflies all havin' fun !");
 }
 
-Registry::~Registry()
+registry::~registry()
 {}
 
-void Registry::SetDefaultLogger(std::shared_ptr<Logger> pLogger)
+void registry::set_default_logger(std::shared_ptr<logger> p_logger)
 {
-	if(!pLogger)
+	if(!p_logger)
 	{
-		PrintException(BFLY_SOURCE, "pLogger is nullptr");
+		print_exception(BFLY_SOURCE, "p_logger is nullptr");
 		return ;
 	}
 
-	mDefaultLogger = pLogger;
+	m_default_logger = p_logger;
 }
 
-void Registry::Add(std::string pIdentifier, std::shared_ptr<Logger> pLogger)
+void registry::add(std::string p_identifier, std::shared_ptr<logger> p_logger)
 {
-	if(pIdentifier.empty())
+	if(p_identifier.empty())
 	{
 		return ;
 	}
 
-	if(!pLogger)
+	if(!p_logger)
 	{
-		PrintException(BFLY_SOURCE, "invalid argument, pLogger is nullptr");
+		print_exception(BFLY_SOURCE, "invalid argument, p_logger is nullptr");
 		return ;
 	}
 
-	auto vInsertResult = mLoggers.insert(std::make_pair(pIdentifier, pLogger));
+	auto result = m_loggers.insert(std::make_pair(p_identifier, p_logger));
 
-	if(!vInsertResult.second)
+	if(!result.second)
 	{
-		PrintException(BFLY_SOURCE, "failed");
-		return ;
-	}
-}
-
-void Registry::Remove(std::string pIdentifier)
-{
-	if(pIdentifier.empty())
-	{
-		return ;
-	}
-
-	auto vEraseResult = mLoggers.erase(pIdentifier);
-
-	if(!vEraseResult)
-	{
-		PrintException(BFLY_SOURCE, "invalid argument, pIdentifier not found");
+		print_exception(BFLY_SOURCE, "failed");
 		return ;
 	}
 }
 
-std::shared_ptr<Logger> Registry::Get(std::string pIdentifier) const
+void registry::remove(std::string p_identifier)
 {
-	return mLoggers.at(pIdentifier); // throws out_of_range
+	if(p_identifier.empty())
+	{
+		return ;
+	}
+
+	auto result = m_loggers.erase(p_identifier);
+
+	if(!result)
+	{
+		print_exception(BFLY_SOURCE, "invalid argument, p_identifier not found");
+		return ;
+	}
+}
+
+std::shared_ptr<logger> registry::get(std::string p_identifier) const
+{
+	return m_loggers.at(p_identifier); // throws out_of_range
 }
 
 }

@@ -1,52 +1,52 @@
 #pragma once
 
-#include <Butterfly/Common.hpp>
-#include <Butterfly/Logger.hpp>
-#include <Butterfly/Details/PackageFormatter.hpp>
+#include <butterfly/common.hpp>
+#include <butterfly/logger.hpp>
+#include <butterfly/details/package_formatter.hpp>
 
 
 #include <string>
 
-namespace Butterfly
+namespace butterfly
 {
 
 /**
  * @brief An logger interface used to write a record.
  */
-class Wing : public Logger
+class wing : public logger
 {
 public :
-	Wing(Level::Value pLevel = Level::minimal, std::unique_ptr<PackageFormatter> pFormatter = std::make_unique<PackageFormatter>(PackageFormatter::MinimalPattern));
-	Wing(std::unique_ptr<PackageFormatter> pFormatter);
+	wing(level::value p_level = level::minimal, std::unique_ptr<package_formatter> p_formatter = create_package_formatter(pattern::simple));
+	wing(std::unique_ptr<package_formatter> p_formatter);
 
-	virtual ~Wing();
+	virtual ~wing();
 
 	/**
-	 * @brief Logs a record using the Write function defined by the class.
-	 * @param pLevel The level to be logged;
-	 * @param pTag The tag of the record to log;
-	 * @param pMessage The message of the record to log;
-	 * @param pSource The source of the call to the log function;
+	 * @brief Logs a record using the write function defined by the class.
+	 * @param p_level The level to be logged;
+	 * @param p_tag The tag of the record to log;
+	 * @param p_message The message of the record to log;
+	 * @param p_source The source of the call to the log function;
 	 */
-	inline virtual void Log(Level::Value pLevel, std::string pTag, std::string pMessage) override
+	inline virtual void log(level::value p_level, std::string_view p_tag, std::string_view p_message) override
 	{
-		if(pLevel < mLevel)
+		if(p_level < m_level)
 		{
 			return ;
 		}
 
-		Write(mFormatter->Format(Package(time(nullptr), pLevel, pTag, pMessage)));
+		write(m_formatter->format(package(time(nullptr), p_level, p_tag, p_message)));
 	}
 
 protected :
 	/**
 	 * @brief Writes a record.
-	 * @param pRecord The record the be logged;
+	 * @param p_record The record the be logged;
 	 */
-	virtual void Write(std::string pRecord) = 0;
+	virtual void write(std::string p_record) = 0;
 
-	Level::Value mLevel;
-	std::unique_ptr<PackageFormatter> mFormatter;
+	level::value m_level;
+	std::unique_ptr<package_formatter> m_formatter;
 
 }; 
 
