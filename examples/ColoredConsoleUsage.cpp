@@ -10,7 +10,7 @@ using namespace std;
 
 int main() {
 
-	SetDefaultLogger(CreateWing<ColoredConsoleWing>("", "[{level:}] {message:}\n"));
+	SetDefaultLogger(CreateWing<ColoredConsoleWing>("", Pattern::report));
 
 	Trace("ColoredConsoleWing", "this is a trace");
 	Info("ColoredConsoleWing", "this is an info");

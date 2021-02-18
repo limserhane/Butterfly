@@ -13,8 +13,8 @@ namespace Butterfly
 class ColoredConsoleWing : public ConsoleWing
 {
 public :
-	ColoredConsoleWing(Level::Value pLevel = Level::minimal, const char* pPattern = PackageFormatter::SimplePattern);
-	ColoredConsoleWing(const char* pPattern);
+	ColoredConsoleWing(Level::Value pLevel = Level::minimal, Pattern pPattern = Pattern::simple);
+	ColoredConsoleWing(Pattern pPattern);
 	
 	virtual ~ColoredConsoleWing();
 };

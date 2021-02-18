@@ -4,32 +4,20 @@
 namespace Butterfly
 {
 
-ColoredPackageFormatter::ColoredPackageFormatter(const char* pPattern):
-	PackageFormatter(pPattern)
-{}
-
-ColoredPackageFormatter::ColoredPackageFormatter(const ColoredPackageFormatter& pOther):
-	PackageFormatter(pOther)
-{}
-
-ColoredPackageFormatter::~ColoredPackageFormatter()
+ColoredPackageFormatter::ColoredPackageFormatter(std::unique_ptr<PackageFormatter> pFormatter):
+	PackageFormatter(),
+	mFormatter(std::move(pFormatter))
 {}
 
 std::string ColoredPackageFormatter::Format(Package pPackage) const
 {
-	constexpr size_t lBufferSize = 256;
-	char lBuffer[lBufferSize];
+	std::string s = mFormatter->Format(pPackage);
+	std::string lBuffer;
+	lBuffer.reserve(12 + s.size());
 
-	snprintf(
-		lBuffer, lBufferSize,
-
-		(StartColorFlag(pPackage.Level) + mFormat + EndColorFlag()).c_str(), 
-
-		FormatTime(pPackage.Time).c_str(),
-		FormatLevel(pPackage.Level).c_str(),
-		pPackage.Tag.c_str(),
-		pPackage.Message.c_str()
-	);
+	lBuffer += StartColorFlag(pPackage.Level);
+	lBuffer += s;
+	lBuffer += EndColorFlag();
 
 	return lBuffer;
 }

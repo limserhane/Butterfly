@@ -5,11 +5,11 @@
 namespace Butterfly
 {
 
-ColoredConsoleWing::ColoredConsoleWing(Level::Value pLevel, const char* pPattern):
-	ConsoleWing(pLevel, std::make_unique<ColoredPackageFormatter>(pPattern))
+ColoredConsoleWing::ColoredConsoleWing(Level::Value pLevel, Pattern pPattern):
+	ConsoleWing(pLevel, std::make_unique<ColoredPackageFormatter>(CompilePackageFormatter(pPattern)))
 {}
 
-ColoredConsoleWing::ColoredConsoleWing(const char* pPattern):
+ColoredConsoleWing::ColoredConsoleWing(Pattern pPattern):
 	ColoredConsoleWing(Level::minimal, pPattern)
 {}
 
