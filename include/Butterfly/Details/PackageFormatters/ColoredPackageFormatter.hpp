@@ -9,12 +9,8 @@ namespace Butterfly
 class ColoredPackageFormatter : public PackageFormatter
 {
 public :
-	ColoredPackageFormatter(const char* pPattern = "");
-
-	ColoredPackageFormatter(const ColoredPackageFormatter& pOther);
-
-	virtual ~ColoredPackageFormatter();
-
+	ColoredPackageFormatter(std::unique_ptr<PackageFormatter> pFormatter);
+	
 	/**
 	 * @brief Format a log record into a string.
 	 * @param pFormatter A formatter providing the needed format for the log record and for the log informations;
@@ -40,6 +36,9 @@ protected :
 	{
 		return "\033[0m";
 	}
+
+private :
+	std::unique_ptr<PackageFormatter> mFormatter;
 
 };
 

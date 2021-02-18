@@ -7,31 +7,85 @@
 namespace Butterfly
 {
 
-PackageFormatter::PackageFormatter(const char* pPattern):
-	mFormat(),
-	mTimeFormat()
+template<Pattern P>
+std::string Formatter<P>::FormatTime(time_t pRawTime) const
 {
-	Compile(pPattern);
+	char lTimeBuffer[21];
+
+	strftime(lTimeBuffer, 21, "%F %T", localtime(&pRawTime));
+
+	return lTimeBuffer;
 }
 
-PackageFormatter::PackageFormatter(const PackageFormatter& pOther):
-	mFormat(pOther.mFormat),
-	mTimeFormat(pOther.mTimeFormat)
-{}
 
-PackageFormatter::~PackageFormatter()
-{}
-
-std::string PackageFormatter::Format(Package pPackage) const
+template <> std::string Formatter<Pattern::none>::Format(Package pPackage) const
 {
-	constexpr size_t lBufferSize = 256;
+	constexpr size_t lBufferSize = 512;
 	char lBuffer[lBufferSize];
 
 	snprintf(
 		lBuffer, lBufferSize,
+		"%s\n",
+		pPackage.Message.c_str()
+	);
 
-		mFormat.c_str(), 
+	return lBuffer;
+}
 
+template <> std::string Formatter<Pattern::minimal>::Format(Package pPackage) const
+{
+	constexpr size_t lBufferSize = 512;
+	char lBuffer[lBufferSize];
+
+	snprintf(
+		lBuffer, lBufferSize,
+		"[%s] %s\n",
+		pPackage.Tag.c_str(),
+		pPackage.Message.c_str()
+	);
+
+	return lBuffer;
+}
+
+template <> std::string Formatter<Pattern::report>::Format(Package pPackage) const
+{
+	constexpr size_t lBufferSize = 512;
+	char lBuffer[lBufferSize];
+
+	snprintf(
+		lBuffer, lBufferSize,
+		"[%s] %s\n",
+		ToString(pPackage.Level).c_str(),
+		pPackage.Message.c_str()
+	);
+
+	return lBuffer;
+}
+
+template <> std::string Formatter<Pattern::simple>::Format(Package pPackage) const
+{
+	constexpr size_t lBufferSize = 512;
+	char lBuffer[lBufferSize];
+
+	snprintf(
+		lBuffer, lBufferSize,
+		"[%s] [%s] %s\n",
+		FormatLevel(pPackage.Level).c_str(),
+		pPackage.Tag.c_str(),
+		pPackage.Message.c_str()
+	);
+
+	return lBuffer;
+}
+
+template <> std::string Formatter<Pattern::complete>::Format(Package pPackage) const
+{
+	constexpr size_t lBufferSize = 512;
+	char lBuffer[lBufferSize];
+
+	snprintf(
+		lBuffer, lBufferSize,
+		"[%s] [%s] [%s] %s\n",
 		FormatTime(pPackage.Time).c_str(),
 		FormatLevel(pPackage.Level).c_str(),
 		pPackage.Tag.c_str(),
@@ -41,64 +95,17 @@ std::string PackageFormatter::Format(Package pPackage) const
 	return lBuffer;
 }
 
-void PackageFormatter::Compile(std::string pPattern)
+std::unique_ptr<PackageFormatter> CompilePackageFormatter(Pattern pPattern)
 {
-	if(pPattern.empty())
+	switch(pPattern)
 	{
-		pPattern = SimplePattern;
+		case Pattern::none : return std::make_unique<Formatter<Pattern::none>>();
+		case Pattern::minimal : return std::make_unique<Formatter<Pattern::minimal>>();
+		case Pattern::report : return std::make_unique<Formatter<Pattern::report>>();
+		case Pattern::simple : return std::make_unique<Formatter<Pattern::simple>>();
+		case Pattern::complete : return std::make_unique<Formatter<Pattern::complete>>();
+		default : ThrowException(BFLY_SOURCE, "invalid argument, pPattern is no valid pattern"); return nullptr;
 	}
-
-	std::regex flag("\\{(\\w+):([^\\{\\}]*)\\}");
-
-	auto lFlagsBegin = std::sregex_iterator(pPattern.begin(), pPattern.end(), flag);
-	auto lFlagEnd = std::sregex_iterator();
-
-	std::string lFormat = pPattern;
-
-	for (std::sregex_iterator lMatchIt = lFlagsBegin; lMatchIt != lFlagEnd; lMatchIt ++)
-	{
-		std::smatch lMatch = *lMatchIt; 
-
-		std::string lMatchString = lMatch.str(); 
-		std::string lFlagIdentifier = lMatch[1].str();
-
-		std::string lReplacement;
-		if(lFlagIdentifier == "message")
-		{
-			lReplacement = "%4$$s";
-		}
-		else if(lFlagIdentifier == "time")
-		{
-			lReplacement = "%1$$s";
-			mTimeFormat = lMatch[2].str();
-		}
-		else if(lFlagIdentifier == "level")
-		{
-			lReplacement = "%2$$s";
-		}
-		else if(lFlagIdentifier == "tag")
-		{
-			lReplacement = "%3$$s";
-		}
-		else
-		{
-			lReplacement = lFlagIdentifier;
-		}
-
-		lFormat = std::regex_replace(lFormat, flag, lReplacement, std::regex_constants::format_first_only);
-	}
-
-	mFormat = lFormat;
-}
-
-std::string PackageFormatter::FormatTime(time_t pRawTime) const
-{
-	constexpr size_t lBufferSize = 32;
-	char lBuffer[lBufferSize];
-
-	strftime(lBuffer, lBufferSize, mTimeFormat.c_str(), localtime(&pRawTime));
-	
-	return lBuffer;
 }
 
 } 

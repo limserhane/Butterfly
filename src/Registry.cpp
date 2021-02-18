@@ -8,7 +8,7 @@ namespace Butterfly
 {
 
 Registry::Registry():
-	mDefaultLogger(std::make_shared<ConsoleWing>("[{tag:}] {message:}\n"))
+	mDefaultLogger(std::make_shared<ConsoleWing>(Pattern::minimal))
 {
 	GetDefaultLogger()->Trace("Butterfly", "Butterflies all havin' fun !");
 }

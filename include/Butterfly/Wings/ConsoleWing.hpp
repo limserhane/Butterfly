@@ -14,8 +14,8 @@ class ConsoleWing : public Wing
 {
 public :
 
-	ConsoleWing(Level::Value pLevel = Level::minimal, const char* pPattern = PackageFormatter::SimplePattern);
-	ConsoleWing(const char* pPattern);
+	ConsoleWing(Level::Value pLevel = Level::minimal, Pattern pPattern = Pattern::simple);
+	ConsoleWing(Pattern pPattern);
 	
 	virtual ~ConsoleWing();
 

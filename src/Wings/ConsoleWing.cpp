@@ -9,11 +9,11 @@ ConsoleWing::ConsoleWing(Level::Value pLevel, std::unique_ptr<PackageFormatter> 
 	Wing(pLevel, std::move(pFormatter))
 {}
 
-ConsoleWing::ConsoleWing(Level::Value pLevel, const char* pPattern):
-	ConsoleWing(pLevel, std::make_unique<PackageFormatter>(pPattern))
+ConsoleWing::ConsoleWing(Level::Value pLevel, Pattern pPattern):
+	ConsoleWing(pLevel, CompilePackageFormatter(pPattern))
 {}
 
-ConsoleWing::ConsoleWing(const char* pPattern):
+ConsoleWing::ConsoleWing(Pattern pPattern):
 	ConsoleWing(Level::minimal, pPattern)
 {}
 

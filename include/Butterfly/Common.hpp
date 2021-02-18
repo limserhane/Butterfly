@@ -65,6 +65,18 @@ struct Source
 }; 
 
 /**
+ * @brief The available patterns for log records.
+ */
+enum class Pattern
+{
+	none, // MESSAGE
+	minimal, // [TAG] MESSAGE
+	report, // [LEVEL] MESSAGE
+	simple, // [LEVEL] [TAG] MESSAGE
+	complete, // [YYYY-mm-dd HH:MM:SS] [LEVEL] [TAG] MESSAGE
+};
+
+/**
  * @brief A basic exception used by Butterfly.
  */
 class Exception : public std::exception

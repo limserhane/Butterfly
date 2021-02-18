@@ -23,7 +23,7 @@ void CriticalTask()
 
 void ButterflyInitialization()
 {
-	auto consoleLogger = CreateWing<ConsoleWing>("main", Level::warning, PackageFormatter::CompletePattern); // "main" logger will Log in the console with a different pattern than the default
+	auto consoleLogger = CreateWing<ConsoleWing>("main", Level::warning, Pattern::complete); // "main" logger will Log in the console with a different pattern than the default
 
 	auto networklogger = CreateNet("network", {consoleLogger, CreateWing<FileWing>("", "log-advanced-usage.txt")}); // "network" logger will Log both in the console and in the file (through a newly created logger)
 	
