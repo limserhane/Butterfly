@@ -10,7 +10,7 @@ build : clean directories generate compile
 
 clean :
 	rm -rf $(BUILDDIR)* $(BINDIR)*
-	rm log-*.txt
+	rm -f log-*.txt
 
 generate :
 	cmake -S . -B $(BUILDDIR)

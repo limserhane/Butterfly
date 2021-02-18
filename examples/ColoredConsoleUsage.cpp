@@ -17,7 +17,7 @@ int main() {
 	Warning("ColoredConsoleWing", "this is a warning");
 	Error("ColoredConsoleWing", "this is an error");
 	Fatal("ColoredConsoleWing", "this is a fatal error");
-	Debug("ColoredConsoleWing", "this is a debug info");
+	Debug("ColoredConsoleWing", BFLY_SOURCE.PrettyFunction + " : this is a debug info");
 
 	return 0;
 }

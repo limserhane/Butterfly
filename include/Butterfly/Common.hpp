@@ -98,4 +98,8 @@ void PrintException(Source pSource, std::string pDetails);
 
 } 
 
-#define BFLY_SOURCE Butterfly::Source(__FILE__, __LINE__, __func__, __func__)
+#if _MSC_VER
+#define BFLY_SOURCE Butterfly::Source(__FILE__, __LINE__, __func__, __FUNCSIG__)
+#else
+#define BFLY_SOURCE Butterfly::Source(__FILE__, __LINE__, __func__, __PRETTY_FUNCTION__)
+#endif
