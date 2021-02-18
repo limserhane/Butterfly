@@ -12,17 +12,17 @@ using namespace std;
 
 int main() {
 
-	//set_default_logger(create_wing<console_wing>("")); // 75k/s
+	set_default_logger(create_wing<console_wing>("")); // 230k/s
 
-	// set_default_logger(create_wing<colored_console_wing>("")); // 10k/s
+	// set_default_logger(create_wing<colored_console_wing>("")); // 220k/s
 
-	 set_default_logger(create_wing<file_wing>("", "log-speed-test.txt")); // 230k/s
+	//  set_default_logger(create_wing<file_wing>("", "log-speed-test.txt")); // 280k/s
 
 	using std::chrono::duration;
 	using std::chrono::duration_cast;
 	using std::chrono::high_resolution_clock;
 
-	size_t howmany = 1000;
+	size_t howmany = 10000;
 
 	auto start = high_resolution_clock::now();
 	

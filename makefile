@@ -18,7 +18,7 @@ directories :
 	mkdir -p $(BUILDDIR) $(BINDIR)
 
 generate-library : clean directories
-	$(CMAKE)
+	$(CMAKE) -DCMAKE_BUILD_TYPE=Release
 
 generate-all : clean directories
 	$(CMAKE) -DBUILD_EXAMPLES=ON
@@ -27,4 +27,4 @@ build :
 	$(CMAKEMAKE)
 
 install : generate-library
-	$(CMAKEMAKE) install
+	$(CMAKEMAKE) install 
