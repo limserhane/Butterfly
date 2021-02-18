@@ -13,7 +13,7 @@ This library is a standalone and uses `c++17` standard. It is available for Linu
 Butterfly is developped to be used as a static library.
 
 ---
-To compile the library, use the root makefile.
+To compile the library, CMake tool is required.
 
 ### Install library
 ```
@@ -36,8 +36,6 @@ $ git clone https://github.com/limserhane/Butterfly.git
 $ cd Butterfly/
 $ make generate-all
 ```
-
----
 
 ## Features
 
@@ -75,7 +73,7 @@ $ make generate-all
 Documentation is coming. (The source code is well commented, though)
 
 ## Usage
----
+
 ### Basic usage
  ```c++
 auto consoleLogger = create_wing<console_wing>("", level::warning); // Will only write in the console records that have a warning or higher level
@@ -91,7 +89,7 @@ set_default_logger(logger); // Or I can set logger as the default logger ...
 info("Engine", "Engine initialization complete"); // ... and log
 
  ```
----
+
 ### Advanced usage
  ```c++
 auto consoleLogger = create_wing<console_wing>("main", level::warning, pattern::complete); // "main" logger will log in the console with a different pattern than the default
@@ -110,7 +108,7 @@ get("main")->error("Engine", "Engine initialization failed"); // this is an erro
 get("network")->trace("Network", "Socket binded to port 80"); // this will print both it the file and in the console
 get("network")->error("Network", "Network service unavailable"); // this will print both it the file and in the console
  ```
----
+
 ### Thread safe usage
 ```c++
 // This logger is not safe to concurrent accesses
