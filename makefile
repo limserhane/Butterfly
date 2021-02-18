@@ -1,68 +1,22 @@
-# Directories
-# PROJDIR := $(realpath $(CURDIR)/)/
-SRCDIR     := src
-INCLUDEDIR := include
-EXAMPLEDIR := example
-BUILDDIR   := build
-BINDIR     := bin
-BINEXAMPLEDIR := $(BINDIR)/$(EXAMPLEDIR)/
 
-# 
-SOURCES := $(wildcard $(SRCDIR)/*.cpp)
-OBJECTS := $(subst $(SRCDIR)/, $(BUILDDIR)/, $(SOURCES:.cpp=.o))
+BUILDDIR=build/
+BINDIR=bin/
 
-# Library
-LIBNAME	:= butterfly
-LIBFILENAME := lib$(strip $(LIBNAME)).a
-LIBPATH := $(BINDIR)/$(LIBFILENAME)
+.PHONY : build clean generate compile directories
 
-# Example
-EXAMPLESOURCES := $(wildcard $(EXAMPLEDIR)/*.cpp)
-EXAMPLES := $(addprefix $(BINEXAMPLEDIR), $(notdir $(EXAMPLESOURCES:.cpp=.out)))
+all :
 
-# Compiler
-CC = g++ -std=c++17
-CCFLAGS = -Wall -Wextra -pedantic -g
-AR = ar rcs
+build : clean directories generate compile
 
-# Commands
-MKDIR := mkdir -p
-RM := rm -rf
+clean :
+	rm -rf $(BUILDDIR)* $(BINDIR)*
+	rm log-*.txt
 
-.PHONY : all build rebuild directories clean examples
+generate :
+	cmake -S . -B $(BUILDDIR)
 
-all : rebuild
-
-build : directories $(LIBPATH) examples
-
-rebuild : clean build
+compile :
+	make -C $(BUILDDIR)
 
 directories :
-	@ $(MKDIR) $(BUILDDIR) $(BINDIR) $(BINDIR)/$(EXAMPLEDIR)
-
-clean : 
-	@ echo "Cleaning up project builds"
-	@ $(RM) $(BUILDDIR)/* $(BINDIR)/*
-	@ $(RM) log-*.txt callgrind.out.*
-
-
-examples : $(LIBPATH) $(EXAMPLES)
-
-#########################################################
-######################	RULES	#########################
-#########################################################
-
-# build/objects
-$(BUILDDIR)/%.o : $(SRCDIR)/%.cpp
-	@ echo "Building $(@F)" 
-	@ $(CC) $(CCFLAGS) -I $(INCLUDEDIR)/ -c $< -o $@ 
-
-# bin/lib
-$(LIBPATH) : $(OBJECTS)
-	@ echo "Building $(@F)"
-	@ $(AR) $@ $^
-
-# bin/example-
-$(BINDIR)/$(EXAMPLEDIR)/%.out : $(EXAMPLEDIR)/%.cpp $(LIBPATH) 
-	@ echo "Building $(@F)"
-	@ $(CC) $(CCFLAGS) -I $(INCLUDEDIR) -L$(BINDIR) $< -o $@ -l$(LIBNAME) -lpthread 
+	mkdir -p $(BUILDDIR) $(BINDIR)
