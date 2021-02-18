@@ -6,21 +6,21 @@
 #include <sstream>
 #include <string_view>
 
-namespace Butterfly
+namespace butterfly
 {
 
-class Logger;
-// using LoggerPointer = std::shared_ptr<Logger>;
-class Net;
-// using NetPointer = std::shared_ptr<Net>;
+class logger;
+// using LoggerPointer = std::shared_ptr<logger>;
+class net;
+// using NetPointer = std::shared_ptr<net>;
 
-namespace Level 
+namespace level 
 {
 
 /**
  * @brief The severity levels of the logs.
  */
-enum Value
+enum value
 {
 	all		= -1, // The level used to specify that a logger must not log anything;
 	minimal = 0, // The minimal level that logs can have;
@@ -33,41 +33,41 @@ enum Value
 	off			 // The level used to specify that a logger must log everything;
 };
 
-static constexpr const char* Names[] = { "trace", "info", "warning", "error", "fatal", "debug" };
+static constexpr const char* names[] = { "trace", "info", "warning", "error", "fatal", "debug" };
 
 }
 /**
- * @brief Converts a Level value into its string representation.
- * @param pLevel The level value to be converted;
- * @return The string representation of \p pLevel
+ * @brief Converts a level value into its string representation.
+ * @param p_level The level value to be converted;
+ * @return The string representation of \p p_level
  */
-inline std::string ToString(Level::Value pLevel)
+inline std::string to_string(level::value p_level)
 {
-	if(Level::minimal <= pLevel && pLevel < Level::off)
-		return Level::Names[pLevel];
+	if(level::minimal <= p_level && p_level < level::off)
+		return level::names[p_level];
 	return "";
 }
 
 /**
  * @brief A structure containing informations about a location in the source code.
  */
-struct Source
+struct source
 {
-	Source();
-	Source(std::string pFile, int pLine, std::string pFunction, std::string pPrettyFunction);
-	Source(const Source& other);
+	source();
+	source(std::string p_file, int p_line, std::string p_function, std::string p_pretty_function);
+	source(const source& p_other);
 
-	std::string File;
-	int Line;
-	std::string Function;
-	std::string PrettyFunction;
+	std::string file;
+	int line;
+	std::string function;
+	std::string pretty_function;
 
 }; 
 
 /**
  * @brief The available patterns for log records.
  */
-enum class Pattern
+enum class pattern
 {
 	none, // MESSAGE
 	minimal, // [TAG] MESSAGE
@@ -77,41 +77,41 @@ enum class Pattern
 };
 
 /**
- * @brief A basic exception used by Butterfly.
+ * @brief A basic exception used by butterfly.
  */
-class Exception : public std::exception
+class exception : public std::exception
 {
 public :
-	Exception(Source pSource, std::string pDetails);
+	exception(source p_source, std::string p_details);
 
 	const char* what() const throw();
 
 protected :
-	static std::string Format(Source pSource, std::string pDetails);
+	static std::string format(source p_source, std::string p_details);
 
 private :
-	std::string mDescription;
+	std::string m_description;
 
 }; 
 
 /**
  * @brief Throws an exception.
- * @param pSource The location of the exception;
- * @param pDetails Details about the exception;
+ * @param p_source The location of the exception;
+ * @param pDetails details about the exception;
  */
-void ThrowException(Source pSource, std::string pDetails);
+void throw_exception(source p_source, std::string p_details);
 
 /**
  * @brief Writes an exception on the standard output for errors.
- * @param pSource The location of the exception;
- * @param pDetails Details about the exception;
+ * @param p_source The location of the exception;
+ * @param p_details details about the exception;
  */
-void PrintException(Source pSource, std::string pDetails);
+void print_exception(source p_source, std::string p_details);
 
 } 
 
 #if _MSC_VER
-#define BFLY_SOURCE Butterfly::Source(__FILE__, __LINE__, __func__, __FUNCSIG__)
+#define BFLY_SOURCE butterfly::source(__FILE__, __LINE__, __func__, __FUNCSIG__)
 #else
-#define BFLY_SOURCE Butterfly::Source(__FILE__, __LINE__, __func__, __PRETTY_FUNCTION__)
+#define BFLY_SOURCE butterfly::source(__FILE__, __LINE__, __func__, __PRETTY_FUNCTION__)
 #endif

@@ -8,35 +8,37 @@ set(INC_DIR "include/${PROJECT_NAME}")
 
 # Static library 
 
+# set(CMAKE_BUILD_TYPE Release)
+
 add_library(butterfly STATIC
 	# src/
-	"${SRC_DIR}/Butterfly.cpp"	"${INC_DIR}/Butterfly.hpp"
-	"${SRC_DIR}/Common.cpp"		"${INC_DIR}/Common.hpp"
-	"${SRC_DIR}/Logger.cpp"		"${INC_DIR}/Logger.hpp"
-	"${SRC_DIR}/Net.cpp"		"${INC_DIR}/Net.hpp"
-	"${SRC_DIR}/Wing.cpp"		"${INC_DIR}/Wing.hpp"
-	"${SRC_DIR}/Registry.cpp"	"${INC_DIR}/Registry.hpp"
-	"${SRC_DIR}/SafeLogger.cpp"	"${INC_DIR}/SafeLogger.hpp"
+	"${SRC_DIR}/butterfly.cpp"		"${INC_DIR}/butterfly.hpp"
+	"${SRC_DIR}/common.cpp"			"${INC_DIR}/common.hpp"
+	"${SRC_DIR}/logger.cpp"			"${INC_DIR}/logger.hpp"
+	"${SRC_DIR}/net.cpp"			"${INC_DIR}/net.hpp"
+	"${SRC_DIR}/wing.cpp"			"${INC_DIR}/wing.hpp"
+	"${SRC_DIR}/registry.cpp"		"${INC_DIR}/registry.hpp"
+	"${SRC_DIR}/safe_logger.cpp"	"${INC_DIR}/safe_logger.hpp"
 
-	# src/Wings/
-	"${SRC_DIR}/Wings/ConsoleWing.cpp"			"${INC_DIR}/Wings/ConsoleWing.hpp"
-	"${SRC_DIR}/Wings/ColoredConsoleWing.cpp"	"${INC_DIR}/Wings/ColoredConsoleWing.hpp"
-	"${SRC_DIR}/Wings/FileWing.cpp"				"${INC_DIR}/Wings/FileWing.hpp"
+	# src/wings/
+	"${SRC_DIR}/wings/console_wing.cpp"			"${INC_DIR}/wings/console_wing.hpp"
+	"${SRC_DIR}/wings/colored_console_wing.cpp"	"${INC_DIR}/wings/colored_console_wing.hpp"
+	"${SRC_DIR}/wings/file_wing.cpp"			"${INC_DIR}/wings/file_wing.hpp"
 
-	# src/Details/
-	"${SRC_DIR}/Details/Package.cpp"			"${INC_DIR}/Details/Package.hpp"
-	"${SRC_DIR}/Details/PackageFormatter.cpp"	"${INC_DIR}/Details/PackageFormatter.hpp"
+	# src/details/
+	"${SRC_DIR}/details/package.cpp"			"${INC_DIR}/details/package.hpp"
+	"${SRC_DIR}/details/package_formatter.cpp"	"${INC_DIR}/details/package_formatter.hpp"
 
-	# src/Details/PackageFormatters
-	"${SRC_DIR}/Details/PackageFormatters/ColoredPackageFormatter.cpp"	"${INC_DIR}/Details/PackageFormatters/ColoredPackageFormatter.hpp"
+	# src/details/package_formatters
+	"${SRC_DIR}/details/package_formatters/colored_package_formatter.cpp"	"${INC_DIR}/details/package_formatters/colored_package_formatter.hpp"
 )
 add_library(butterfly::lib ALIAS butterfly)
 
 target_compile_features(butterfly PUBLIC cxx_std_17)
 
-set_target_properties(butterfly PROPERTIES
-	ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin/"
-)
+# set_target_properties(butterfly PROPERTIES
+# 	ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin/"
+# )
 
 target_include_directories(butterfly PUBLIC "include/")
 
