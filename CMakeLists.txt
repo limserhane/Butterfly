@@ -1,14 +1,20 @@
 
 cmake_minimum_required(VERSION 3.12)
 
+option(BUILD_EXAMPLES "Build examples" OFF)
+
+if(NOT CMAKE_BUILD_TYPE)
+	set(CMAKE_BUILD_TYPE "RelWithDebInfo")
+endif()
+
+set(CMAKE_INSTALL_PREFIX "${CMAKE_SOURCE_DIR}/bin" CACHE PATH "Path to install directory" FORCE)
+
 project(butterfly LANGUAGES CXX)
 
 set(SRC_DIR "src")
 set(INC_DIR "include/${PROJECT_NAME}")
 
 # Static library 
-
-# set(CMAKE_BUILD_TYPE Release)
 
 add_library(butterfly STATIC
 	# src/
@@ -36,12 +42,19 @@ add_library(butterfly::lib ALIAS butterfly)
 
 target_compile_features(butterfly PUBLIC cxx_std_17)
 
-# set_target_properties(butterfly PROPERTIES
-# 	ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin/"
-# )
-
 target_include_directories(butterfly PUBLIC "include/")
 
-#Examples
+# Install
 
-add_subdirectory("examples/")
+install(
+	TARGETS butterfly
+	EXPORT butterfly
+	ARCHIVE DESTINATION "lib/"
+)
+install(DIRECTORY "include/" DESTINATION "${CMAKE_INSTALL_PREFIX}/include/")
+
+
+#Examples
+if(BUILD_EXAMPLES)
+	add_subdirectory("examples/")
+endif()

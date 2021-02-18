@@ -2,21 +2,29 @@
 BUILDDIR=build/
 BINDIR=bin/
 
-.PHONY : build clean generate compile directories
+CMAKE=cmake -S . -B $(BUILDDIR)
+
+CMAKEMAKE=make -C $(BUILDDIR)
+
+.PHONY : all clean directories generate-library generate-all build install
 
 all :
 
-build : clean directories generate compile
-
 clean :
-	rm -rf $(BUILDDIR)* $(BINDIR)*
+	rm -rf $(BUILDDIR)* $(BUILDDIR).+ $(BINDIR)*
 	rm -f log-*.txt
-
-generate :
-	cmake -S . -B $(BUILDDIR)
-
-compile :
-	make -C $(BUILDDIR)
 
 directories :
 	mkdir -p $(BUILDDIR) $(BINDIR)
+
+generate-library : clean directories
+	$(CMAKE)
+
+generate-all : clean directories
+	$(CMAKE) -DBUILD_EXAMPLES=ON
+
+build :
+	$(CMAKEMAKE)
+
+install : generate-library
+	$(CMAKEMAKE) install

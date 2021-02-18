@@ -17,13 +17,3 @@ endif()
 add_executable(coloredconsoleusage "colored_console_usage.cpp")
 
 add_executable(speedtest "speedtest.cpp")
-
-# set_target_properties(
-# 	basicusage 
-# 	advancedusage
-# 	threadsafeusage
-# 	coloredconsoleusage
-# 	speedtest
-# 	PROPERTIES
-# 	RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin/"
-# )
