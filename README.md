@@ -58,6 +58,8 @@ $ make generate-all
 
 ## Upcoming features
 
+* Support for output operator `<<`
+
 * More log targets
 	* Callback function
 	* Buffered logger
