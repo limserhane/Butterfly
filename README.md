@@ -58,7 +58,7 @@ $ make generate-all
 
 ## Upcoming features
 
-* Support for output operator `<<`
+* Support for output operator `<<` and string format `"%d frames", frames`
 
 * More log targets
 	* Callback function
