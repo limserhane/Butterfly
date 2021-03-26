@@ -20,6 +20,7 @@ To compile the library, CMake tool is required.
 $ git clone https://github.com/limserhane/Butterfly.git
 $ cd Butterfly/
 $ make install
+$ make build
 ```
 The static library and the include files can be found in the `bin/` directory.
 
@@ -28,6 +29,7 @@ The static library and the include files can be found in the `bin/` directory.
 $ git clone https://github.com/limserhane/Butterfly.git
 $ cd Butterfly/
 $ make generate-library
+$ make build
 ```
 
 ### Compile library and examples
@@ -35,6 +37,7 @@ $ make generate-library
 $ git clone https://github.com/limserhane/Butterfly.git
 $ cd Butterfly/
 $ make generate-all
+$ make build
 ```
 
 ## Features
