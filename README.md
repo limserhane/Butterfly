@@ -4,7 +4,7 @@ Butterfly is another `c++` logging library.
 
 Butterfly is designed to be ergonomic and powerful, not extra-performant.  
 
-The library i still in development.  
+<!-- The library is still in development. -->
 
 ## Platform & Requirements & Installation
 
