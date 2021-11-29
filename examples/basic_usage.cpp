@@ -10,7 +10,7 @@ using namespace std;
 
 int main() {
 
-	auto consoleLogger = create_wing<console_wing>("", level::warning); // Will only write in the console records that have a warning or higher level
+	auto consoleLogger = create_wing<console_wing>("", level::all); // Will write in the console all records
 
 	auto fileLogger = create_wing<file_wing>("", "log-basic-usage.txt"); // Will write in the "log-basic-usage.txt" file all records (no level specified)
 
