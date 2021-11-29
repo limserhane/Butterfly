@@ -22,7 +22,7 @@ $ cd Butterfly/
 $ make install
 $ make build
 ```
-The static library and the include files can be found in the `bin/` directory.
+The static library and the include files can be found in the `build/` directory.
 
 ### Compile library only
 ```
@@ -81,7 +81,7 @@ Documentation is coming. (The source code is well commented, though)
 
 ### Basic usage
  ```c++
-auto consoleLogger = create_wing<console_wing>("", level::warning); // Will only write in the console records that have a warning or higher level
+auto consoleLogger = create_wing<console_wing>("", level::all); // Will write in the console all records
 
 auto fileLogger = create_wing<file_wing>("", "log-basic-usage.txt"); // Will write in the "log-basic-usage.txt" file all records (no level specified)
 
